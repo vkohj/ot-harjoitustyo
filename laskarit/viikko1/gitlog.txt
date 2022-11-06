@@ -110,4 +110,4 @@ Date:   Fri Nov 4 17:49:36 2022 +0900
     tiedosto.txt luotu
 
  tiedosto.txt | 0
- 1 file changed, 0 insertions(+), 0 deletions(-)
+ 1 file changed, 0 insertions(+), 0 deletions(-) 
