@@ -1,0 +1,113 @@
+commit 74bb18a61d015a0cad224160090cb8ce14d004b5
+Author: Verneri Kerätär <verneri.keratar@helsinki.fi>
+Date:   Sat Nov 5 00:36:40 2022 +0900
+
+    file1 poisto, ja uudelleennimeys file 2 -> file 22
+
+ tiedostoja/file2             | 0
+ tiedostoja/{file1 => file22} | 0
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 978f83ae2d0647979ae9010ccbda733abe64fc0e
+Author: Verneri Kerätär <verneri.keratar@helsinki.fi>
+Date:   Sat Nov 5 00:34:45 2022 +0900
+
+    tiedostoja
+
+ tiedostoja/file1 | 0
+ tiedostoja/file2 | 0
+ tiedostoja/file3 | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+commit c1e7816a85eebc43836d412812f4e2573f9c897e
+Author: Verneri Kerätär <verneri.keratar@helsinki.fi>
+Date:   Sat Nov 5 00:32:00 2022 +0900
+
+    muutoksia ekaan ja kolmoseen
+
+ eka.txt    | 5 +++--
+ kolmas.txt | 5 ++++-
+ 2 files changed, 7 insertions(+), 3 deletions(-)
+
+commit 5fe872eca2dc612d16862edbc148d12da882a623
+Author: Verneri Kerätär <verneri.keratar@helsinki.fi>
+Date:   Fri Nov 4 18:00:58 2022 +0900
+
+    uudelleennimentä tiedosto.txt -> eka.txt
+
+ tiedosto.txt => eka.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 7c91a0af7c1733f0e8be8ee2ce5ad7b3035d2fed
+Author: Verneri Kerätär <verneri.keratar@helsinki.fi>
+Date:   Fri Nov 4 18:00:12 2022 +0900
+
+    Poistettu toinen.txt
+
+ toinen.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+commit dca7085d41feb280bd18c9b401be5fd26f0f030c
+Author: Verneri Kerätär <verneri.keratar@helsinki.fi>
+Date:   Fri Nov 4 17:59:35 2022 +0900
+
+    hieman lisää tekstiä
+
+ tiedosto.txt | 10 +++-------
+ 1 file changed, 3 insertions(+), 7 deletions(-)
+
+commit 9d394a8d9b22c075b5644c4e3d05b314955617ef
+Author: Verneri Kerätär <verneri.keratar@helsinki.fi>
+Date:   Fri Nov 4 17:57:35 2022 +0900
+
+    lisätty tekstiä
+
+ tiedosto.txt | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
+
+commit 0a6634187e3638dded54f97249e242e1de32b23b
+Author: Verneri Kerätär <verneri.keratar@helsinki.fi>
+Date:   Fri Nov 4 17:54:24 2022 +0900
+
+    uusi hakemisto 'stuff'
+
+ stuff/jokin.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit ff3ec48521d5c8ae349427017678c0aa6f912ff6
+Author: Verneri Kerätär <verneri.keratar@helsinki.fi>
+Date:   Fri Nov 4 17:53:44 2022 +0900
+
+    muutos toiseen ja kolmanteen
+
+ kolmas.txt | 1 +
+ toinen.txt | 1 +
+ 2 files changed, 2 insertions(+)
+
+commit 626926eecd7edb3493bd64601392fd0b68710a62
+Author: Verneri Kerätär <verneri.keratar@helsinki.fi>
+Date:   Fri Nov 4 17:53:05 2022 +0900
+
+    kolmas
+
+ kolmas.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit b461ed9588d9451a7416a65d6296ce218546e015
+Author: Verneri Kerätär <verneri.keratar@helsinki.fi>
+Date:   Fri Nov 4 17:51:01 2022 +0900
+
+    muutos ja lisäys
+
+ tiedosto.txt | 1 +
+ toinen.txt   | 0
+ 2 files changed, 1 insertion(+)
+
+commit 16dd54abe17ca7642cd40c437c3b14bc1f2f6388
+Author: Verneri Kerätär <verneri.keratar@helsinki.fi>
+Date:   Fri Nov 4 17:49:36 2022 +0900
+
+    tiedosto.txt luotu
+
+ tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
