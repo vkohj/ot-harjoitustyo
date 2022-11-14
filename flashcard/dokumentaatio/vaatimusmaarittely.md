@@ -6,8 +6,14 @@ Sovelluksen avulla käyttäjän pitäisi pystyä luomaan, hallitsemaan ja tarkas
 ## Käyttöliittymä
 Käyttäjän pitäisi pystyä navigoimaan käyttöliittymää ja käyttämään kortteja vaikka ei ymmärtäisi sanaakaan japania, vaikkakin itse kortit olisivatkin tällaisessa tilanteessa epäkäytännöllisiä.
 
-(WIP)
+#### Sovelluksen aloitus
+![](./img/alku.png)
 
+#### Korttien tarkastelu
+![](./img/tarkastelu.png)
+
+#### Asetukset (Avautuu uuteen ikkunaan?)
+![](./img/asetukset.png)
 
 ## Toiminnallisuus
 
@@ -21,3 +27,4 @@ Käyttäjän pitäisi pystyä navigoimaan käyttöliittymää ja käyttämään 
 ### Muuta lisättävää jne.
 - Korttien muokkaus, luonti ja poisto graafisen käyttöliittymän avulla
 - Käyttäjä voi kirjoittaa alleviivatun sanan lukutavan, jonka sovellus sitten toteaa oikeaksi tai vääräksi.
+-
