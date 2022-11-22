@@ -1,11 +1,52 @@
-# Ohjelmistotekniikka, harjoitustyö
-## Tehtävät
-### Viikko 1
-[gitlog.txt](https://github.com/vkohj/ot-harjoitustyo/blob/main/laskarit/viikko1/gitlog.txt)
+# Suomi-japani Flashcard-sovellus
+Ohjelma on keskeneräinen ja osa [Helsingin Yliopiston ohjelmistotekniikan](https://ohjelmistotekniikka-hy.github.io/) kurssia.
 
-[komentorivi.txt](https://github.com/vkohj/ot-harjoitustyo/blob/main/laskarit/viikko1/komentorivi.txt)
+Sovellus tulee mahdollistamaan suomi-japani korttipakkojen luomisen, muokkaamisen ja tarkastelemisen. Kortteja tarkastellessa käyttäjä näkee ensin japaninkielisen lauseen ja erikseen eritellyn sanan alleviivattuna. Painamalla nappia käyttäjä saa näkyviiin sanan lukutavan ja suomen kielen käännöksen.
 
-### Viikko 2
-[Vaatimusmäärittely](https://github.com/vkohj/ot-harjoitustyo/blob/main/flashcard/dokumentaatio/vaatimusmaarittely.md)
 
-[Työaikakirjanpito](https://github.com/vkohj/ot-harjoitustyo/blob/main/flashcard/dokumentaatio/tuntikirjanpito.md)
+## Vaatimukset
+⚠️ Python 3.8 tai uudempi ⚠️
+
+Sovellus suositellaan asentamaan poetry-järjestelmällä.
+
+### Poetryn kautta automaattisesti asennettavat moduulit
+* Invoke 1.7.3 tai uudempi
+* Pytest 7.2.0 tai uudempi
+* Coverage 6.5.0 tai uudempi
+
+## Asennus
+⚠️ Huomaathan, että ohjelma sijaitsee kansiossa "flashcard"!
+
+Ohjelman voi asentaa joko ilman tai sisältäen ohjelman kehitykseen vaadittavat moduulit.
+
+### Käyttäjälle
+```poetry install --without dev```
+
+### Ohjelmoijalle
+```poetry install```
+
+## Käynnistäminen
+### Linux
+```poetry run invoke start```
+
+### Vaihtoehtoinen (Windows, Linux yms.)
+```poetry python src```
+
+## Dokumentaatio
+* [Changelog](./flashcard/dokumentaatio/changelog.md)
+* [Vaatimusmäärittely](./flashcard/dokumentaatio/vaatimusmaarittely.md)
+* [Työaikakirjanpito](./flashcard/dokumentaatio/tuntikirjanpito.md)
+
+## Lisäkomentoja
+Projekti sisältää myös muutaman ylimääräisen invoke-komennon.
+
+### Testien suorittaminen
+```poetry run invoke test```
+
+### Testien kattaavuus ja sen tulostus html-tiedostoon
+```poetry run invoke coverage-report```
+
+
+
+
+

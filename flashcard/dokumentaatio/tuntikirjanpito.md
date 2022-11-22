@@ -7,4 +7,5 @@
 | 15.11. | 0.75  | projektin runko |
 | 19.11. | 1.25 | konsolikäyttöliittymän työstöä |
 | 21.11. | 3 | konsolikäyttöliittymä, tiedostojen luku
-| 22.11. | 2.5 | säätöä
+| 22.11. | 4 | moduuleiden kanssa säätöä, tiedostojen luvun viimeistely, testit FileReader-luokalle, changelog
+
