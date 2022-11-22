@@ -5,4 +5,6 @@
 | 13.11. | 0.5   | tuntikirjanpidon suunnittelu |
 | 14.11. | 0.5   | tuntikirjapidon viimeistely |
 | 15.11. | 0.75  | projektin runko |
-| 15.19. | 1.25 | konsolikäyttöliittymän työstöä |
+| 19.11. | 1.25 | konsolikäyttöliittymän työstöä |
+| 21.11. | 3 | konsolikäyttöliittymä, tiedostojen luku
+| 22.11. | 2.5 | säätöä

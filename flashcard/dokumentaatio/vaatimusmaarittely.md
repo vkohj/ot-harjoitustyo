@@ -28,3 +28,20 @@ Käyttäjän pitäisi pystyä navigoimaan käyttöliittymää ja käyttämään 
 - Korttien muokkaus, luonti ja poisto graafisen käyttöliittymän avulla
 - Käyttäjä voi kirjoittaa alleviivatun sanan lukutavan, jonka sovellus sitten toteaa oikeaksi tai vääräksi.
 -
+
+## .xmlpack tiedoston esimerkki
+```
+<pack>
+    <name></name>
+    <desc></desc>
+
+    <cards>
+        <card>
+            <!-- Etsittävä sana ympäröity **-merkeillä -->
+            <sentence>This is a **sentence**.</sentence>
+            <reading></reading>
+            <translation></translation>
+        </card>
+    </cards>
+</pack>
+```

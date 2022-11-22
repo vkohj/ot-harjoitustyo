@@ -1,4 +1,3 @@
-from handlers.filereader import FileReader
 
 #    Väliaikainen konsolikäyttöliittymä     #
 # ----------------------------------------- #
@@ -9,17 +8,16 @@ from handlers.filereader import FileReader
 # komennosta.                               #
 
 class Console:
-    def __init__(self):
+    def __init__(self, service):
 
-        # Osoite kansioon, josta tarkistetaan korttipakat automaattisesti
-        self.__packfolder = "kortit"
+        # Sovellustoteutus
+        self.__service = service
 
         # Lista viiteistä avattuihin "valikoihin", jota
-        # käytetään run()-loopissa
+        # käytetään run()-loopissa. Toimii jonona, jonka viimeinen
+        # olio on nyt auki oleva valikko
         self.__menu = [self.__mainmenu]
 
-        
-        
 
     # Palauttaa konsolin käytössä olevat komennot listana
     def __mainmenu(self) -> int:
@@ -27,10 +25,9 @@ class Console:
 [a] avaa pakka
 [x] poistu\n""")
 
-        # Odota käyttäjältä komentoa
+        # Odota käyttäjältä komentoa, ja toteuta se
         command = input("> ")
 
-        # Toteuta komento
         if command == "x": return -1
         if command == "a": self.__menu.append(self.__open)
 
@@ -41,9 +38,8 @@ class Console:
     # kirjoittaa korttipakan osoitteen manuaalisesti
     def __open(self):
 
-        # Hae kansion .xmlpack-tiedostot, ja näytä ne listana
-        files = FileReader.get_files(self.__packfolder, ".xmlpack", True)
-        print(f"-- Korttipakat kansiossa /{self.__packfolder}/")
+        print(f"-- Korttipakat kansiossa /{self.__service.packfolder}/")
+        files = self.__service.get_files_in_folder()
 
         # Näytä tiedostot listana komentorivillä muodossa "[index] tiedosto.xmlpack"
         for i in range(len(files)):
@@ -53,20 +49,44 @@ class Console:
 
         # Odota komentoa
         print("\nAnna numero avataksesi sitä vastaavan tiedoston")
-        print(f"[m] osoite muu kuin /{self.__packfolder}/")
+        #print(f"[m] osoite muu kuin /{self.__service.packfolder}/")
         print(f"[x] peruuta\n")
 
         while True:
             command = input(">")
 
             if command == "x": self.__menu.pop(); break
+
+            # Lataa tiedosto jos käyttäjä antoi hyväksyyttävän numeron
             if command.isnumeric() and int(command) <= len(files):
-                print(files[int(command)-1])
-                break;
+                index = int(command)-1
+                val = self.__service.load_pack(self.__service.packfolder + "/" +files[index])
+                if val:
+                    self.__menu.append(self.__cards)
+                    return
+                else:
+                    print(self.__service.file_error + "\n")
+                    continue
 
 
             print("Tuntematon komento\n")
 
+
+
+    # -- Viikon 3 testifunktio, joka palauttaa jokaisen kortin pakassa -- #
+    # Odottaa syötettä, jonka jälkeen palaa takaisin edelliseen valikkoon
+    def __cards(self):
+        print("Tulostetaan kaikki kortit:\n")
+        while True:
+            card = self.__service.get_next_card()
+            if card == None: break
+
+            print(f"{card.sentence}\nlukutapa: {card.reading} ({card.translation})\n")
+
+        
+        input("Paina ENTER jatkaaksesi.\n")
+        self.__menu.pop()
+        
 
 
         
