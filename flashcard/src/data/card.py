@@ -11,11 +11,7 @@ class Card:
     @property
     def reading(self):
         return self.__reading
-    
+
     @property
     def translation(self):
         return self.__translation
-
-    
-    
-    

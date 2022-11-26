@@ -10,7 +10,8 @@ class Pack:
         self.__cards.append(card)
 
     def get_card(self, index):
-        if index >= len(self.__cards): return None
+        if index >= len(self.__cards):
+            return None
         return self.__cards[index]
 
     @property

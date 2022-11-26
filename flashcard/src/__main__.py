@@ -8,6 +8,6 @@ def main():
     # Käytä väliaikaista konsolikäyttöliittymää
     console = Console(service)
     console.run()
-    
+
 if __name__ == "__main__":
     main()
