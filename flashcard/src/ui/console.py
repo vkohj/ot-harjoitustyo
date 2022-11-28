@@ -146,21 +146,9 @@ class Console:
                         continue
 
                     index = int(commands[1])-1
-                    if i < 0 or i >= len(sentences):
-                        print(f"Ei korttia kohdassa {commands[1]}")
-
-                    # Lause
-                    sentence = self.__service.get_card_sentence(index)
-                    print(f"Lause: {sentence}")
-                    value = input("Uusi lause (tyhjä = jatka muuttamatta): ")
-                    if value != "":
-                        sentence = value
-
-                    # Muuta lause
-                    # TODO: vaadi varmistus muutoksista
-                    self.__service.set_card_sentence(index, sentence)
-
+                    self.__linear_edit(index)
                     continue
+                    
 
             print("Tuntematon komento\n")
 
@@ -176,3 +164,56 @@ class Console:
             # jos vastaus on -1, sulje konsolikäyttöliittymä
             if self.__menu[-1]() == -1:
                 break
+
+
+    # -- "Lineaarisia" konsolitoimintoja, joita ei lisätä self.__menu-listaan
+    def __linear_edit(self, index):
+        if index < 0 or index >= len(self.__service.get_sentences()):
+            print(f"Ei korttia kohdassa {index+1}\n")
+            return
+
+        # Pyydä käyttäjältä uudet arvot
+        sentence = self.__func_edit_value("Lause", self.__service.get_card_sentence(index), True)
+        reading = self.__func_edit_value("Lukutapa", self.__service.get_card_reading(index))
+        translation = self.__func_edit_value("Käännös", self.__service.get_card_translation(index))
+
+        # Muuta lause
+        print("Kortin päivitetyt tiedot")
+        print(f"Lause: {sentence}")
+        print(f"Lukutapa: {reading}")
+        print(f"Käännös: {translation}")
+
+        print(f"\nOvatko nämä oikein? ([y] hyväksy, [n]/tyhjä peruuta)")
+        command = input(">")
+
+        if command == "y":
+            self.__service.set_card_sentence(index, sentence)
+            self.__service.set_card_reading(index, reading)
+            self.__service.set_card_translation(index, translation)
+
+            print(f"Tiedot muutettiin\n")
+        else:
+            print(f"Peruutetaan\n")
+
+
+    # -- Monesti käytettäviä käyttöliittymän osia --
+
+    # Tulosta nykyinen muuttuja, ja kysy käyttäjältä uutta uutta
+    def __func_edit_value(self, type:str, default, require_highlight = False):
+        default
+        print(f"{type}: {default}")
+        value = input("Uusi lause (tyhjä = jatka muuttamatta): ")
+        if value != "":
+            if require_highlight:
+                if value.count("**") != 2:
+                    print(f"Syöte ei sisältänyt **-merkeillä ympäröityä aluetta\n")
+                    return default
+                if len(value.split("**")[1]) == 0:
+                    print(f"**-merkeillä ympäröity alue ei sisältänyt yhtään kirjainta\n")
+                    return default
+            
+            print("")
+            return value
+        print("")
+        return default
+        

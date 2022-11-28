@@ -55,8 +55,31 @@ class FileReader:
                 p_translation = card.find('translation')
                 pack.add_card(
                     Card(p_sentence.text, p_reading.text, p_translation.text))
+        
+        # TODO: Siirtyminen pois yleisestä Exception-luokasta
         except Exception as ex:
             FileReader.lasterror = "Virhe lukiessa XML-tiedostoa\n" + str(ex)
             return None
 
         return pack
+
+    # Tallenna .xmlpack tiedosto
+    # Funktio käyttää Pack.path muuttujaa osoitteena.
+    # TODO: Tulevaisuudessa osoitteen voisi antaa itse, ja se tarkistettaisiin virheistä
+    @staticmethod
+    def save_to_xml(pack):
+        if not os.path.exists(pack.path):
+            FileReader.lasterror = "Tiedostoa ei löytynyt"
+            return False
+
+        try:
+            
+
+        # TODO: Siirtyminen pois yleisestä Exception-luokasta
+        except Exception as ex:
+            FileReader.lasterror = "Virhe kirjoittaessa XML-tiedostoa\n" + str(ex)
+            return None
+
+        return pack
+        
+        

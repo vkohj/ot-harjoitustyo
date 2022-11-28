@@ -66,13 +66,29 @@ class Flashcard:
 
     # -- Korttien set/get metodit --
     def get_card_sentence(self, index):
-        if self.__activepack is None:
-            return
-        
-        return self.__activepack.get_card(index).sentence
+        if self.__activepack is not None:
+            return self.__activepack.get_card(index).sentence
 
     def set_card_sentence(self, index, value):
-        if self.__activepack is None:
-            return
+        if self.__activepack is not None:
+            self.__activepack.get_card(index).sentence = value
 
-        self.__activepack.get_card(index).sentence = value
+    def get_card_reading(self, index):
+        if self.__activepack is not None:
+            return self.__activepack.get_card(index).reading
+
+    def set_card_reading(self, index, value):
+        if self.__activepack is not None:
+            self.__activepack.get_card(index).reading = value
+
+    def get_card_translation(self, index):
+        if self.__activepack is not None:
+            return self.__activepack.get_card(index).translation
+
+    def set_card_translation(self, index, value):
+        if self.__activepack is not None:
+            self.__activepack.get_card(index).translation = value
+
+    
+
+    
