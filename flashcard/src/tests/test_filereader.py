@@ -5,13 +5,15 @@ import os
 import xml.etree.ElementTree as ET
 from handlers.filereader import FileReader
 
+
 class TestFileReader(unittest.TestCase):
     def setUp(self):
         FileReader.lasterror = ""
 
     @pytest.fixture
     def use_tempdir(self, tmp_path, monkeypatch):
-        monkeypatch.chdir(tmp_path)  # change to pytest-provided temporary directory
+        # change to pytest-provided temporary directory
+        monkeypatch.chdir(tmp_path)
 
     @pytest.fixture
     def create_test_files(self):
@@ -25,17 +27,19 @@ class TestFileReader(unittest.TestCase):
     def test_get_files_empty_path_returns_empty(self):
         val = FileReader.get_files("fake/")
         self.assertEqual(val, [])
-    
+
     @pytest.mark.usefixtures("use_tempdir", "create_test_files")
     def test_get_files_returns_files_with_prefix(self):
         val = FileReader.get_files("get_files_test", ".xmlpack")
-        self.assertEqual(set(val), set(["ba.xmlpack","fo.xmlpack","999.xmlpack"]))
+        self.assertEqual(set(val), set(
+            ["ba.xmlpack", "fo.xmlpack", "999.xmlpack"]))
 
     @pytest.mark.usefixtures("use_tempdir", "create_test_files")
     def test_get_files_returns_all(self):
         val = FileReader.get_files("get_files_test")
-        self.assertEqual(set(val), set(["a.txt", "ba.xmlpack","fo.xmlpack","999.xmlpack"]))
-    
+        self.assertEqual(set(val), set(
+            ["a.txt", "ba.xmlpack", "fo.xmlpack", "999.xmlpack"]))
+
     @pytest.mark.usefixtures("use_tempdir")
     def test_get_files_creates_folder(self):
         path = "unexisting_folder/folder2"
@@ -43,7 +47,6 @@ class TestFileReader(unittest.TestCase):
         FileReader.get_files(path, "", True)
         self.assertEqual(os.path.exists(path), True)
 
-    
     @pytest.mark.usefixtures("use_tempdir")
     def test_load_with_empty_path_returns_none(self):
         val = FileReader.load_from_xml("fake/file.xmlpack")
@@ -59,7 +62,8 @@ class TestFileReader(unittest.TestCase):
         self.assertEqual(FileReader.lasterror, "")
 
     def test_load_corrupted_returns_none(self):
-        val = FileReader.load_from_xml("src/tests/test_files/corrupted.xmlpack")
+        val = FileReader.load_from_xml(
+            "src/tests/test_files/corrupted.xmlpack")
         self.assertEqual(val, None)
         self.assertNotEqual(FileReader.lasterror, "")
 
@@ -75,15 +79,16 @@ class TestFileReader(unittest.TestCase):
         translation = "esimerkkilause"
 
         card1 = ET.SubElement(cards, "card")
-        ET.SubElement(card1,"sentence").text = sentence
-        ET.SubElement(card1,"reading").text = reading
-        ET.SubElement(card1,"translation").text = translation
+        ET.SubElement(card1, "sentence").text = sentence
+        ET.SubElement(card1, "reading").text = reading
+        ET.SubElement(card1, "translation").text = translation
 
         tree = ET.ElementTree(pack)
         tree.write("testpack.xmlpack")
 
         val = FileReader.load_from_xml("testpack.xmlpack")
         self.assertNotEqual(val, None)
+        self.assertEqual(val.path, "testpack.xmlpack")
 
         # Tarkistetaan kortin 1 sisältö
         card = val.get_card(0)

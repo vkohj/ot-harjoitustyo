@@ -8,6 +8,7 @@ from data.card import Card
 # Tätä luokkaa käytetään erilaisten tiedostojen  #
 # ja hakemistojen lukemiseen                     #
 
+
 class FileReader:
 
     lasterror = ""
@@ -15,12 +16,13 @@ class FileReader:
     # Palauttaa tiedostot, jotka päättyvät tiettyyn merkkijonoon
     # kansio luodaan, jos sitä ei ole ja "create" on tosi
     @staticmethod
-    def get_files(path, suffix = "", create = False):
+    def get_files(path, suffix="", create=False):
 
         if not os.path.exists(path):
             if create:
                 os.makedirs(path)
-            else: return []
+            else:
+                return []
 
         files = os.listdir(path)
         if suffix != "":
@@ -44,14 +46,15 @@ class FileReader:
             if p_name is None:
                 FileReader.lasterror = "Korruptoitunut korttipakka: pakalta puuttuu <name>"
                 return None
-            pack = Pack(p_name.text)
+            pack = Pack(p_name.text, path)
 
             # Lue kortit ja lisää ne pakkaan
             for card in root.iter('card'):
                 p_sentence = card.find('sentence')
                 p_reading = card.find('reading')
                 p_translation = card.find('translation')
-                pack.add_card(Card(p_sentence.text, p_reading.text, p_translation.text))
+                pack.add_card(
+                    Card(p_sentence.text, p_reading.text, p_translation.text))
         except Exception as ex:
             FileReader.lasterror = "Virhe lukiessa XML-tiedostoa\n" + str(ex)
             return None

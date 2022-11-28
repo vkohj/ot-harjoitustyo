@@ -2,9 +2,10 @@
 #   -----------------------------------------    #
 
 class Pack:
-    def __init__(self, name):
+    def __init__(self, name, path):
         self.__name = name
         self.__cards = []
+        self.__path = path
 
     def add_card(self, card):
         self.__cards.append(card)
@@ -15,5 +16,12 @@ class Pack:
         return self.__cards[index]
 
     @property
-    def get_name(self):
+    def name(self):
         return self.__name
+
+    @property
+    def path(self):
+        return self.__path
+
+    def __len__(self):
+        return len(self.__cards)
