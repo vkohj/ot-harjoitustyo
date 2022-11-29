@@ -31,4 +31,3 @@ class Card:
     sentence = property(__get_sentence, __set_sentence)
     reading = property(__get_reading, __set_reading)
     translation = property(__get_translation, __set_translation)
-

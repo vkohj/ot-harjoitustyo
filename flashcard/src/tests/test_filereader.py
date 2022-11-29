@@ -1,8 +1,9 @@
-from tempfile import tempdir
-import pytest
 import unittest
 import os
 import xml.etree.ElementTree as ET
+import pytest  # pylint: disable=import-error
+from data.pack import Pack
+from data.card import Card
 from handlers.filereader import FileReader
 
 
@@ -95,3 +96,38 @@ class TestFileReader(unittest.TestCase):
         self.assertEqual(card.sentence, sentence)
         self.assertEqual(card.reading, reading)
         self.assertEqual(card.translation, translation)
+
+    @pytest.mark.usefixtures("use_tempdir")
+    def test_save_to_xml_produces_valid_xml(self):
+        path = "folder/testpack.xml"
+        name = "Testipakka"
+        pack = Pack(name, path)
+
+        cardlist = [["これは**例文**です", "れいぶん", "esimerkkilause"],
+                    ["私は猫です", "**ねこ**", "kissa"]]
+        for i in range(2):
+            cardlist.append(
+                Card(cardlist[i][0], cardlist[i][1], cardlist[i][2]))
+
+        card1 = Card(cardlist[0][0], cardlist[0][1], cardlist[0][2])
+        card2 = Card(cardlist[1][0], cardlist[1][1], cardlist[1][2])
+
+        pack.add_card(card1)
+        pack.add_card(card2)
+
+        val = FileReader.save_to_xml(pack)
+        self.assertEqual(FileReader.lasterror, "")
+        self.assertEqual(val, True)
+        self.assertEqual(os.path.exists(path), True)
+
+        # Pakan tiedot ovat oikein
+        tree = ET.parse(path)
+        root = tree.getroot()
+
+        self.assertEqual(root.find('name').text, name)
+        i = 0
+        for card in root.findall('cards/card'):
+            self.assertEqual(card.find('sentence').text, cardlist[i][0])
+            self.assertEqual(card.find('reading').text, cardlist[i][1])
+            self.assertEqual(card.find('translation').text, cardlist[i][2])
+            i += 1

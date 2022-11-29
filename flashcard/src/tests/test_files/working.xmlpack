@@ -1,0 +1,16 @@
+<pack>
+    <name>Testipakka</name>
+
+    <cards>
+        <card>
+            <sentence>この**文**はテストです。</sentence>
+            <reading>ぶん</reading>
+            <translation>lause</translation>
+        </card>
+        <card>
+            <sentence>アプリを**検索**</sentence>
+            <reading>けんさく</reading>
+            <translation>etsiä, hakea</translation>
+        </card>
+    </cards>
+</pack>

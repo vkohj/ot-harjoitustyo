@@ -11,8 +11,10 @@ Sovellus suositellaan asentamaan poetry-järjestelmällä.
 
 ### Poetryn kautta automaattisesti asennettavat moduulit
 * Invoke 1.7.3 tai uudempi
-* Pytest 7.2.0 tai uudempi
-* Coverage 6.5.0 tai uudempi
+* Pytest 7.2.0 tai uudempi (dev)
+* Coverage 6.5.0 tai uudempi (dev)
+* pylint 2.15.6 tai uudempi (dev)
+* autopep8 2.0.0 tai uudempi (dev)
 
 ## Asennus
 ⚠️ Huomaathan, että ohjelma sijaitsee kansiossa "flashcard"!
@@ -35,9 +37,10 @@ Ohjelman voi asentaa joko ilman tai sisältäen ohjelman kehitykseen vaadittavat
 ## Dokumentaatio
 * [Changelog](./flashcard/dokumentaatio/changelog.md)
 * [Vaatimusmäärittely](./flashcard/dokumentaatio/vaatimusmaarittely.md)
+* [Arkkitehtuuri](./flashcard/dokumentaatio/arkkitehtuuri.md)
 * [Työaikakirjanpito](./flashcard/dokumentaatio/tuntikirjanpito.md)
 
-## Lisäkomentoja
+## Lisäkomentoja (kehittämisversiolle)
 Projekti sisältää myös muutaman ylimääräisen invoke-komennon.
 
 ### Testien suorittaminen
@@ -46,6 +49,8 @@ Projekti sisältää myös muutaman ylimääräisen invoke-komennon.
 ### Testien kattaavuus ja sen tulostus html-tiedostoon
 ```poetry run invoke coverage-report```
 
+### Ohjelmakoodin laaduntarkastus
+```poetry run invoke lint```
 
 
 

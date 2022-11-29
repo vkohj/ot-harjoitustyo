@@ -1,5 +1,6 @@
-from handlers.filereader import FileReader
 from random import shuffle
+from handlers.filereader import FileReader
+from data.card import Card
 
 #   Sovellustoteutuksen sisältävä luokka    #
 # ----------------------------------------- #
@@ -24,17 +25,29 @@ class Flashcard:
     # Lataa tietyn korttipakan tiedot valmiiksi käsittelyä varten
     def load_pack(self, path):
         self.__activepack = FileReader.load_from_xml(path)
+        if self.__activepack is None:
+            return False
+
         self.generate_pack_linear_order()
-        return self.__activepack is not None
+        return True
+
+    # Tallentaa aktiivisen pakan
+    def save_pack(self):
+        if self.__activepack is None:
+            return False
+        self.__activepack.unsaved_changes = False
+        return FileReader.save_to_xml(self.__activepack)
 
     # Järjestää kortit normaaliin järjestykseensä
     def generate_pack_linear_order(self):
-        self.__packorder = [i for i in range(len(self.__activepack))]
+        if self.__activepack:
+            self.__packorder = list(range(len(self.__activepack)))
 
     # Järjestää kortit satunnaiseen järjestykseen
     def generate_pack_random_order(self):
-        self.generate_pack_linear_order()
-        shuffle(self.__packorder)
+        if self.__activepack:
+            self.generate_pack_linear_order()
+            shuffle(self.__packorder)
 
     # Palauttaa korttien lauseet samassa järjestyksessä kuin pack.__cards
     def get_sentences(self):
@@ -55,6 +68,12 @@ class Flashcard:
             return None
         return self.__activepack.path
 
+    # Palauttaa onko pakkaan tehty muutoksia viime tallennuksen jälkeen
+    def get_pack_changed(self):
+        if self.__activepack is None:
+            return False
+        return self.__activepack.unsaved_changes
+
     @property
     def file_error(self):
         return FileReader.lasterror
@@ -63,32 +82,50 @@ class Flashcard:
     def packfolder(self):
         return self.__packfolder
 
-
     # -- Korttien set/get metodit --
+    def __pack_set(self):
+        if self.__activepack is None:
+            return False
+        self.__activepack.unsaved_changes = True
+        return True
+
+    def new_card(self, sentence, reading, translation):
+        if self.__pack_set() is False:
+            return False
+        if sentence == "" or reading == "" or translation == "":
+            return False
+
+        card = Card(sentence, reading, translation)
+        self.__activepack.add_card(card)
+
+        return True
+
     def get_card_sentence(self, index):
-        if self.__activepack is not None:
-            return self.__activepack.get_card(index).sentence
+        if self.__activepack is None:
+            return None
+        return self.__activepack.get_card(index).sentence
 
     def set_card_sentence(self, index, value):
-        if self.__activepack is not None:
-            self.__activepack.get_card(index).sentence = value
+        if self.__pack_set() is False:
+            return
+        self.__activepack.get_card(index).sentence = value
 
     def get_card_reading(self, index):
-        if self.__activepack is not None:
-            return self.__activepack.get_card(index).reading
+        if self.__activepack is None:
+            return None
+        return self.__activepack.get_card(index).reading
 
     def set_card_reading(self, index, value):
-        if self.__activepack is not None:
-            self.__activepack.get_card(index).reading = value
+        if self.__pack_set() is False:
+            return
+        self.__activepack.get_card(index).reading = value
 
     def get_card_translation(self, index):
-        if self.__activepack is not None:
-            return self.__activepack.get_card(index).translation
+        if self.__activepack is None:
+            return None
+        return self.__activepack.get_card(index).translation
 
     def set_card_translation(self, index, value):
-        if self.__activepack is not None:
-            self.__activepack.get_card(index).translation = value
-
-    
-
-    
+        if self.__pack_set() is False:
+            return
+        self.__activepack.get_card(index).translation = value

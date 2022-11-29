@@ -6,12 +6,13 @@ class Pack:
         self.__name = name
         self.__cards = []
         self.__path = path
+        self.__unsaved_changes = False
 
     def add_card(self, card):
         self.__cards.append(card)
 
     def get_card(self, index):
-        if index >= len(self.__cards):
+        if index < 0 or index >= len(self.__cards):
             return None
         return self.__cards[index]
 
@@ -25,3 +26,12 @@ class Pack:
 
     def __len__(self):
         return len(self.__cards)
+
+    # Property tallentamattomille pakan muutoksille
+    def __get_unsaved_changes(self):
+        return self.__unsaved_changes
+
+    def __set_unsaved_changes(self, value):
+        self.__unsaved_changes = value
+
+    unsaved_changes = property(__get_unsaved_changes, __set_unsaved_changes)

@@ -33,6 +33,7 @@ class FileReader:
     # Lataa .xmlpack tiedosto
     @staticmethod
     def load_from_xml(path):
+
         if not os.path.exists(path):
             FileReader.lasterror = "Tiedostoa ei löytynyt"
             return None
@@ -55,9 +56,10 @@ class FileReader:
                 p_translation = card.find('translation')
                 pack.add_card(
                     Card(p_sentence.text, p_reading.text, p_translation.text))
-        
+
         # TODO: Siirtyminen pois yleisestä Exception-luokasta
-        except Exception as ex:
+        # Käytetään pylint disable, jottei lokissa ole samaa ongelmaa kahta kertaa
+        except Exception as ex:  # pylint: disable=broad-except
             FileReader.lasterror = "Virhe lukiessa XML-tiedostoa\n" + str(ex)
             return None
 
@@ -65,21 +67,38 @@ class FileReader:
 
     # Tallenna .xmlpack tiedosto
     # Funktio käyttää Pack.path muuttujaa osoitteena.
-    # TODO: Tulevaisuudessa osoitteen voisi antaa itse, ja se tarkistettaisiin virheistä
     @staticmethod
     def save_to_xml(pack):
-        if not os.path.exists(pack.path):
-            FileReader.lasterror = "Tiedostoa ei löytynyt"
-            return False
+        # TODO: Kauniimman xml-tiedoston tuottaminen
+        # Vasta Python 3.9 valitettavasti tarjoaa indent() komennon
+        # https://stackoverflow.com/questions/3095434/inserting-newlines-in-xml-file-generated-via-xml-etree-elementtree-in-python
+
+        path = pack.path.split("/")
+        folder = "./" + "/".join(path[:len(path)-1])
+        if not os.path.exists(folder):
+            os.makedirs(folder)
 
         try:
-            
+            xmlpack = ET.Element("pack")
+            ET.SubElement(xmlpack, "name").text = pack.name
+            cards = ET.SubElement(xmlpack, "cards")
+
+            for i in range(len(pack)):
+                card = pack.get_card(i)
+
+                xmlcard = ET.SubElement(cards, "card")
+                ET.SubElement(xmlcard, "sentence").text = card.sentence
+                ET.SubElement(xmlcard, "reading").text = card.reading
+                ET.SubElement(xmlcard, "translation").text = card.translation
+
+            tree = ET.ElementTree(xmlpack)
+            tree.write(pack.path, "UTF-8")
 
         # TODO: Siirtyminen pois yleisestä Exception-luokasta
-        except Exception as ex:
-            FileReader.lasterror = "Virhe kirjoittaessa XML-tiedostoa\n" + str(ex)
+        # Käytetään pylint disable, jottei lokissa ole samaa ongelmaa kahta kertaa
+        except Exception as ex:  # pylint: disable=broad-except
+            FileReader.lasterror = "Virhe kirjoittaessa XML-tiedostoa\n" + \
+                str(ex)
             return None
 
-        return pack
-        
-        
+        return True

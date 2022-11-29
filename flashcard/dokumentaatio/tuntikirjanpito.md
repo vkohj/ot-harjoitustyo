@@ -10,5 +10,7 @@
 | 22.11. | 4 | moduuleiden kanssa säätöä, tiedostojen luvun viimeistely, testit FileReader-luokalle, changelog
 | 26.11. | 1 | viikon 4 pylint-testit, ohjelmakoodin läpilukua
 | 27.11. | 2 | opettelu ja muokkaus-toimintojen kehitys, FileReader-testien päivittäminen
-| 28.11. | 1 | opettelu ja muokkaus-toimintojen viimeistely, FileReader-luokan save_to_xml metodin kehittämisen aloitus, refraktorointia
+| 28.11. | 3 | opettelu ja muokkaus-toimintojen viimeistely, FileReader-luokan save_to_xml metodin kehittäminen, refraktorointia, tallentamistestin lisääminen FileReader-luokan testeihin
+| 29.11. | 4 | tallentamismahdollisuus konsolikäyttöliittymään, tallentamiseen liittyviä visuaalisia muutoksia, korttien lisäämistoiminnallisuus, changelog, vaatimusmäärittely, testit pack- ja card-luokille, joitain testejä flashcard-luokalle, tasks.py, arkkitehtuuri.md
+| summa | 20
 

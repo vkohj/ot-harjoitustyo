@@ -18,10 +18,12 @@ Käyttäjän pitäisi pystyä navigoimaan käyttöliittymää ja käyttämään 
 ## Toiminnallisuus
 
 ### Perusversio
-- Käyttöliittymä korttien lukemiseen
-    - Kortti antaa lauseen japaniksi, josta yksi sana on alleviivattu
-    - Kortin "kääntöpuolella" löytyy esim. lukutapa ja suomen kielen vastine sanalle
-- Korttien lataus xml-tiedostosta
+- Konsolikäyttöliittymä korttien lukemiseen (tehty)
+    - Kortti antaa lauseen japaniksi, josta yksi sana on alleviivattu (tehty)
+    - Kortin "kääntöpuolella" löytyy esim. lukutapa ja suomen kielen vastine sanalle (tehty)
+- Graafinen käyttöliittymä
+- Korttien lataus xml-tiedostosta (tehty)
+- Korttien muokkaaminen ja lisääminen konsolikäyttöliittymässä (tehty)
 - Korttien avaaminen joko ohjelman alihakemistosta tai valinnaisesta osoitteesta
 
 ### Muuta lisättävää jne.
