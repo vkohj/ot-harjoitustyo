@@ -10,7 +10,7 @@
 class Console:
     def __init__(self, service):
 
-        # Sovellustoteutus
+        # Sovellusolio
         self.__service = service
 
         # Lista viiteistä avattuihin "valikoihin", jota

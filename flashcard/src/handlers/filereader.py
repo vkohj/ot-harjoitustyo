@@ -35,7 +35,7 @@ class FileReader:
     def load_from_xml(path):
 
         if not os.path.exists(path):
-            FileReader.lasterror = "Tiedostoa ei löytynyt"
+            FileReader.lasterror = f'Tiedostoa "{path}" ei löytynyt'
             return None
 
         try:
@@ -60,7 +60,7 @@ class FileReader:
         # TODO: Siirtyminen pois yleisestä Exception-luokasta
         # Käytetään pylint disable, jottei lokissa ole samaa ongelmaa kahta kertaa
         except Exception as ex:  # pylint: disable=broad-except
-            FileReader.lasterror = "Virhe lukiessa XML-tiedostoa\n" + str(ex)
+            FileReader.lasterror = f'Virhe lukiessa tiedostoa "{path}]"\n' + str(ex)
             return None
 
         return pack

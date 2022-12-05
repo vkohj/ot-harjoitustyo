@@ -12,5 +12,7 @@
 | 27.11. | 2 | opettelu ja muokkaus-toimintojen kehitys, FileReader-testien päivittäminen
 | 28.11. | 3 | opettelu ja muokkaus-toimintojen viimeistely, FileReader-luokan save_to_xml metodin kehittäminen, refraktorointia, tallentamistestin lisääminen FileReader-luokan testeihin
 | 29.11. | 4 | tallentamismahdollisuus konsolikäyttöliittymään, tallentamiseen liittyviä visuaalisia muutoksia, korttien lisäämistoiminnallisuus, changelog, vaatimusmäärittely, testit pack- ja card-luokille, joitain testejä flashcard-luokalle, tasks.py, arkkitehtuuri.md
+| 3.12. | 2 | Graafisen käyttöliittymän runko/testausta
+| 4.12. | 4 | Graafisen käyttöliittymän kehittäminen, toiminnallisuus
 | summa | 20
 

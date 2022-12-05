@@ -49,6 +49,11 @@ class Flashcard:
             self.generate_pack_linear_order()
             shuffle(self.__packorder)
 
+    def get_pack_name(self):
+        if self.__activepack is None:
+            raise IndexError("self.__activepack does not exist")
+        return self.__activepack.name
+
     # Palauttaa korttien lauseet samassa järjestyksessä kuin pack.__cards
     def get_sentences(self):
         if self.__activepack is None:
