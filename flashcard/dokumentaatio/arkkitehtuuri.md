@@ -92,4 +92,4 @@ sequenceDiagram
   Flashcard->>UI: True
 ```
 
-Lataamisen jälkeen pakka on tallennettu Flashcard-luokkaan. Käyttöjärjestelmä voi sitten käyttää pakkaa erilaisilla komennoilla, kuten ottamalla pakasta seuraavan kortin ```get_next_card()```-komennolla tai pyytämällä pakan sekoittamista komennolla ```generate_pack_random_order()```
+Lataamisen jälkeen pakka on tallennettu Flashcard-luokkaan. Käyttöjärjestelmä voi sitten käyttää pakkaa Flashcard-luokan kautta erilaisilla komennoilla, kuten pakasta seuraavan kortin ottavalla ```get_next_card()```-komennolla tai pakan sekoittamista pyytävällä komennolla ```generate_pack_random_order()```
