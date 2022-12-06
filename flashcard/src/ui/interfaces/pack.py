@@ -55,7 +55,7 @@ class TkinterGUIPack(TkinterGUITemplate):
         self._add_elem(ttk.Label(
             frame, text="Muokkaus saatavilla vain konsolikäyttöliittymässä.", font=self._font_p), 0, 3)
         self._add_elem(ttk.Label(
-            frame, text='"poetry run invoke console" tai "python src --console"', font=self._font_p), 0, 4)
+            frame, text='"poetry run invoke console" tai "poetry run python src --console"', font=self._font_p), 0, 4)
 
     def __study(self):
         self._handler.add_menu(TkinterGUICard(
