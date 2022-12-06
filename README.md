@@ -4,10 +4,14 @@ Ohjelma on keskeneräinen ja osa [Helsingin Yliopiston ohjelmistotekniikan](http
 Sovellus tulee mahdollistamaan suomi-japani korttipakkojen luomisen, muokkaamisen ja tarkastelemisen. Kortteja tarkastellessa käyttäjä näkee ensin japaninkielisen lauseen ja erikseen eritellyn sanan alleviivattuna. Painamalla nappia käyttäjä saa näkyviin sanan lukutavan ja suomen kielen käännöksen.
 
 
+## Uusin julkaistu versio
+[Flashcard - Viikko 5](https://github.com/vkohj/ot-harjoitustyo/releases/tag/viikko5)
+
 ## Vaatimukset
 ⚠️ Python 3.8 tai uudempi ⚠️
 
 Sovellus suositellaan asentamaan poetry-järjestelmällä.
+
 
 ### Poetryn kautta automaattisesti asennettavat moduulit
 * Invoke 1.7.3 tai uudempi
@@ -17,7 +21,7 @@ Sovellus suositellaan asentamaan poetry-järjestelmällä.
 * autopep8 2.0.0 tai uudempi (dev)
 
 ## Asennus
-⚠️ Huomaathan, että ohjelma sijaitsee kansiossa "flashcard"!
+⚠️ Huomaathan, että alla olevat komennot suoritetaan ohjelman pääkansiossa "flashcard"!
 
 Ohjelman voi asentaa joko ilman tai sisältäen ohjelman kehitykseen vaadittavat moduulit.
 
@@ -42,17 +46,12 @@ Ohjelman voi asentaa joko ilman tai sisältäen ohjelman kehitykseen vaadittavat
 * [Työaikakirjanpito](./flashcard/dokumentaatio/tuntikirjanpito.md)
 
 ## Lisäkomentoja (kehittämisversiolle)
-Projekti sisältää myös muutaman ylimääräisen invoke-komennon.
+Projekti sisältää myös muutaman ylimääräisen invoke-komennon. Nämä komennot vaativat, että olet asentanut ohjelman kehittämisversion (katso kohdasta "Asennus")
 
-### Testien suorittaminen
+* Testien suorittaminen:
 ```poetry run invoke test```
-
-### Testien kattaavuus ja sen tulostus html-tiedostoon
+* Testien kattaavuus ja sen tulostus html-tiedostoon
 ```poetry run invoke coverage-report```
-
-### Ohjelmakoodin laaduntarkastus
+* Ohjelmakoodin laaduntarkastus
 ```poetry run invoke lint```
-
-
-
 
