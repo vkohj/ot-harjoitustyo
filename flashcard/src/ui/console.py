@@ -63,7 +63,6 @@ class Console:
     def __cards(self):
         print(f'''Pakan "{self.__service.get_pack_filename()}" komennot:''')
 
-
         # Jos tallentamattomia muutoksia on tehty
         if self.__service.get_pack_changed():
             print("(tallentamaton)")
@@ -128,7 +127,8 @@ class Console:
     def __modify(self):
         while True:
             print("Komentojen formaatti: <komento> (kortin numero)")
-            print("[list]: listaa kortit, [add] lisää, [edit <n>] muokkaa, [save] tallenna, [x] poistu")
+            print(
+                "[list]: listaa kortit, [add] lisää, [edit <n>] muokkaa, [save] tallenna, [x] poistu")
 
             command = input(">")
             commands = command.split(" ")
@@ -141,7 +141,7 @@ class Console:
 
             if command == "list":
                 sentences = self.__service.get_sentences()
-                #for i in range(len(sentences)):
+                # for i in range(len(sentences)):
                 for i, sentence in enumerate(sentences):
                     print(f"[{i+1}] {sentence}")
                 print()
@@ -221,7 +221,8 @@ class Console:
 
     # Pakan tallennus ja tallennuksenvarmistusikkuna
     def __linear_save(self):
-        print(f"Haluatko tallentaa pakan tiedostoon {self.__service.get_pack_filename()}?")
+        print(
+            f"Haluatko tallentaa pakan tiedostoon {self.__service.get_pack_filename()}?")
         print("([y] hyväksy, [n]/tyhjä peruuta)")
         command = input(">")
 
@@ -255,12 +256,11 @@ class Console:
                 print("Virhe tapahtui lisätessä korttia pakkaan")
         else:
             print("Peruutetaan\n")
-        
-
 
     # -- Monesti käytettäviä käyttöliittymän osia --
 
     # Tulosta nykyinen muuttuja, ja kysy käyttäjältä uutta uutta
+
     def __func_edit_value(self, typename, default, require_highlight=False):
         print(f"{typename}: {default}")
         value = input("Uusi lause (tyhjä = jatka muuttamatta): ")

@@ -2,6 +2,7 @@ from data.pack import Pack
 from data.card import Card
 import unittest
 
+
 class TestPack(unittest.TestCase):
     def setUp(self):
         card1 = Card("こちらは**例文**です", "れいぶん", "esimerkkilause")

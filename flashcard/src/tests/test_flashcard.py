@@ -5,6 +5,7 @@ import pytest  # pylint: disable=import-error
 from flashcard import Flashcard
 from data.pack import Pack
 
+
 class TestFlashcard(unittest.TestCase):
     def setUp(self):
         self.flashcard = Flashcard()

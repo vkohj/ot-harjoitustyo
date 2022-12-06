@@ -34,5 +34,14 @@
     * Joitain testejä Flashcard-luokalle
 * Lisättiin pylintin käyttö tasks.py -tiedostoon
 
+## Viikon 5 muutokset
+2022.11.30 - 2022.12.06
+
+* Graafinen käyttöliittymä
+    * Tkinter käyttöliittymävaihtoehto
+    * Korttien avaaminen ja opiskelutoiminnallisuus
+* Vaihdettiin graafinen käyttöliittymä pääkäyttöliittymäksi
+    * Konsolikäyttöliittymän voi avata  ```--console``` argumentilla tai komennolla ```poetry run invoke console```
+
 
 

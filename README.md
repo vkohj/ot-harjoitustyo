@@ -1,7 +1,7 @@
 # Suomi-japani Flashcard-sovellus
 Ohjelma on keskeneräinen ja osa [Helsingin Yliopiston ohjelmistotekniikan](https://ohjelmistotekniikka-hy.github.io/) kurssia.
 
-Sovellus tulee mahdollistamaan suomi-japani korttipakkojen luomisen, muokkaamisen ja tarkastelemisen. Kortteja tarkastellessa käyttäjä näkee ensin japaninkielisen lauseen ja erikseen eritellyn sanan alleviivattuna. Painamalla nappia käyttäjä saa näkyviiin sanan lukutavan ja suomen kielen käännöksen.
+Sovellus tulee mahdollistamaan suomi-japani korttipakkojen luomisen, muokkaamisen ja tarkastelemisen. Kortteja tarkastellessa käyttäjä näkee ensin japaninkielisen lauseen ja erikseen eritellyn sanan alleviivattuna. Painamalla nappia käyttäjä saa näkyviin sanan lukutavan ja suomen kielen käännöksen.
 
 
 ## Vaatimukset
@@ -21,18 +21,19 @@ Sovellus suositellaan asentamaan poetry-järjestelmällä.
 
 Ohjelman voi asentaa joko ilman tai sisältäen ohjelman kehitykseen vaadittavat moduulit.
 
-### Käyttäjälle
-```poetry install --without dev```
-
-### Ohjelmoijalle
-```poetry install```
+* Käyttäjälle: ```poetry install --without dev```
+* Ohjelmoijalle: ```poetry install```
 
 ## Käynnistäminen
-### Linux
-```poetry run invoke start```
 
-### Vaihtoehtoinen (Windows, Linux yms.)
-```poetry python src```
+### Graafinen käyttöliittymä
+* Linux: ```poetry run invoke start```
+* Windows: Käynnistä ```start.bat```
+* Vaihtoehtoinen: ```poetry run python src``` (Windows, Linux yms.)
+
+### Konsolikäyttöliittymä
+* Linux: ```poetry run invoke console```
+* Vaihtoehtoinen: ```poetry run python src --console``` (Windows, Linux yms.)
 
 ## Dokumentaatio
 * [Changelog](./flashcard/dokumentaatio/changelog.md)

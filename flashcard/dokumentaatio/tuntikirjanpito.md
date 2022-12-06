@@ -14,5 +14,6 @@
 | 29.11. | 4 | tallentamismahdollisuus konsolikäyttöliittymään, tallentamiseen liittyviä visuaalisia muutoksia, korttien lisäämistoiminnallisuus, changelog, vaatimusmäärittely, testit pack- ja card-luokille, joitain testejä flashcard-luokalle, tasks.py, arkkitehtuuri.md
 | 3.12. | 2 | Graafisen käyttöliittymän runko/testausta
 | 4.12. | 4 | Graafisen käyttöliittymän kehittäminen, toiminnallisuus
-| summa | 20
+| 6.12. | 3 | Käyttöliittymä, viikko 5 tehtävät (sekvenssikaaviot, changelog, jne.)
+| summa | 29
 

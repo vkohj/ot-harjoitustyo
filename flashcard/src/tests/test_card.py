@@ -1,6 +1,7 @@
 from data.card import Card
 import unittest
 
+
 class TestCard(unittest.TestCase):
     def setUp(self):
         self.card = Card("こちらは**例文**です", "れいぶん", "esimerkkilause")

@@ -21,7 +21,7 @@ Käyttäjän pitäisi pystyä navigoimaan käyttöliittymää ja käyttämään 
 - Konsolikäyttöliittymä korttien lukemiseen (tehty)
     - Kortti antaa lauseen japaniksi, josta yksi sana on alleviivattu (tehty)
     - Kortin "kääntöpuolella" löytyy esim. lukutapa ja suomen kielen vastine sanalle (tehty)
-- Graafinen käyttöliittymä
+- Graafinen käyttöliittymä (testiversio)
 - Korttien lataus xml-tiedostosta (tehty)
 - Korttien muokkaaminen ja lisääminen konsolikäyttöliittymässä (tehty)
 - Korttien avaaminen joko ohjelman alihakemistosta tai valinnaisesta osoitteesta
@@ -29,7 +29,6 @@ Käyttäjän pitäisi pystyä navigoimaan käyttöliittymää ja käyttämään 
 ### Muuta lisättävää jne.
 - Korttien muokkaus, luonti ja poisto graafisen käyttöliittymän avulla
 - Käyttäjä voi kirjoittaa alleviivatun sanan lukutavan, jonka sovellus sitten toteaa oikeaksi tai vääräksi.
--
 
 ## .xmlpack tiedoston esimerkki
 ```

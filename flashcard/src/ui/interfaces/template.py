@@ -1,5 +1,6 @@
-from tkinter import ttk, constants
+from tkinter import ttk
 from tkinter.font import Font
+
 
 class TkinterWidgetTemplate:
     def __init__(self, widget, column, row, sticky):
@@ -7,6 +8,7 @@ class TkinterWidgetTemplate:
         self.column = column
         self.row = row
         self.sticky = sticky
+
 
 class TkinterGUITemplate:
     def __init__(self, window, service, handler):
@@ -22,7 +24,8 @@ class TkinterGUITemplate:
         self.__elem_named = {}
 
         # Fontit
-        self._font_h1 = Font(family="Arial", size=16)
+        self._font_h1 = Font(size=14, weight="bold")
+        self._font_p = Font(size=10)
 
         self.__initialize()
 
@@ -32,7 +35,7 @@ class TkinterGUITemplate:
 
         for elem in self.__elem_named.values():
             elem.widget.destroy()
-    
+
     def _reinitialize(self):
         raise NotImplementedError("Must override in child class")
 
@@ -55,10 +58,12 @@ class TkinterGUITemplate:
         self._reinitialize()
 
         for elem in self.__elem:
-            elem.widget.grid(column=elem.column, row=elem.row, sticky=elem.sticky)
+            elem.widget.grid(column=elem.column,
+                             row=elem.row, sticky=elem.sticky)
 
         for elem in self.__elem_named.values():
-            elem.widget.grid(column=elem.column, row=elem.row, sticky=elem.sticky)
+            elem.widget.grid(column=elem.column,
+                             row=elem.row, sticky=elem.sticky)
 
         self._hidden = False
 
@@ -67,7 +72,7 @@ class TkinterGUITemplate:
 
     def _add_elem(self, elem, column, row, sticky="", name=""):
         to_append = TkinterWidgetTemplate(elem, column, row, sticky)
-        
+
         if name == "":
             self.__elem.append(to_append)
         else:
@@ -77,7 +82,7 @@ class TkinterGUITemplate:
 
         if not self._hidden:
             elem.grid(row=row, column=column, sticky=sticky)
-    
+
     def _get_elem(self, name):
         if name in self.__elem_named:
             return self.__elem_named[name].widget

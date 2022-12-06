@@ -1,6 +1,7 @@
-from tkinter import ttk, constants
+from tkinter import ttk
 from ui.interfaces.template import TkinterGUITemplate
 from ui.interfaces.card import TkinterGUICard
+
 
 class TkinterGUIPack(TkinterGUITemplate):
     def __init__(self, window, service, handler, pack_path):
@@ -26,7 +27,8 @@ class TkinterGUIPack(TkinterGUITemplate):
             # Tulosta virheviesti
             label = ttk.Label(frame, text="Virhe", font=self._font_h1)
             self._add_elem(label, 0, 0)
-            label2 = ttk.Label(frame, text=f"{self._service.file_error}")
+            label2 = ttk.Label(
+                frame, text=f"{self._service.file_error}", font=self._font_p)
             self._add_elem(label2, 0, 2)
 
             button = ttk.Button(frame, text="Takaisin", command=self._exit)
@@ -34,16 +36,22 @@ class TkinterGUIPack(TkinterGUITemplate):
             return
 
         # Tulosta vaihtoehdot
-        self._add_elem(ttk.Label(frame, text=self._service.get_pack_name(), font=self._font_h1), 0, 0)
+        self._add_elem(
+            ttk.Label(frame, text=self._service.get_pack_name(), font=self._font_h1), 0, 0)
 
         subframe = ttk.Frame(frame)
         self._add_elem(subframe, 0, 1)
-        self._add_elem(ttk.Button(subframe, text="Opiskele", command=self.__study), 0, 0)
-        self._add_elem(ttk.Button(subframe, text="Takaisin", command=self._exit), 1, 0)
+        self._add_elem(ttk.Button(subframe, text="Opiskele",
+                       command=self.__study), 0, 0)
+        self._add_elem(ttk.Button(
+            subframe, text="Takaisin", command=self._exit), 1, 0)
 
-        self._add_elem(ttk.Label(frame, text=""), 0, 2)
-        self._add_elem(ttk.Label(frame, text="Muokkaus saatavilla vain konsolikäyttöliittymässä."), 0, 3)
-        self._add_elem(ttk.Label(frame, text='"poetry run invoke console" tai "python src --console"'), 0, 4)
+        self._add_elem(ttk.Label(frame, text="", font=self._font_p), 0, 2)
+        self._add_elem(ttk.Label(
+            frame, text="Muokkaus saatavilla vain konsolikäyttöliittymässä.", font=self._font_p), 0, 3)
+        self._add_elem(ttk.Label(
+            frame, text='"poetry run invoke console" tai "python src --console"', font=self._font_p), 0, 4)
 
     def __study(self):
-        self._handler.add_menu(TkinterGUICard(self._window, self._service, self._handler))
+        self._handler.add_menu(TkinterGUICard(
+            self._window, self._service, self._handler))

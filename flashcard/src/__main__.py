@@ -4,6 +4,7 @@ from ui.console import Console
 from ui.tkinter import TkinterGUI
 from flashcard import Flashcard
 
+
 def main():
     # Luo sovellus-luokka
     service = Flashcard()
@@ -15,7 +16,6 @@ def main():
     else:
         interface = TkinterGUI(service)
         interface.run()
-
 
 
 if __name__ == "__main__":

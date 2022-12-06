@@ -1,6 +1,7 @@
 from tkinter import Tk
 from ui.interfaces.open import TkinterGUIOpen
 
+
 class TkinterGUI:
     def __init__(self, service):
 
@@ -27,4 +28,3 @@ class TkinterGUI:
         self.__menu[-1].destroy()
         self.__menu.pop(-1)
         self.__menu[-1].show()
-
