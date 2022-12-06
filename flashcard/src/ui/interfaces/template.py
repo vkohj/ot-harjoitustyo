@@ -16,8 +16,8 @@ class TkinterGUITemplate:
         self._service = service
         self._handler = handler
 
-        self._framestyle = ttk.Style()
-        self._framestyle.configure('My.TFrame', background='white')
+        #self._framestyle = ttk.Style()
+        #self._framestyle.configure('My.TFrame', background='white')
 
         # Status
         self._hidden = False

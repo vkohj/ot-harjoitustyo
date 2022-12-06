@@ -22,7 +22,7 @@ class TkinterGUIOpen(TkinterGUITemplate):
         self._reinitialize()
 
         frame = ttk.Frame(master=self._window, padding=(20, 20, 20, 20))
-        self._add_elem(frame, 0, 0, sticky="NW")
+        self._add_elem(frame, 0, 0, sticky="NSEW")
 
         label = ttk.Label(
             frame, text=f"Korttipakat kansiossa /{self._service.packfolder}/", font=self._font_h1)

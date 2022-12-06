@@ -17,7 +17,12 @@ class TkinterGUIPack(TkinterGUITemplate):
     def __initialize(self):
         self._reinitialize()
 
-        frame = ttk.Frame(master=self._window)
+        outerframe = ttk.Frame(master=self._window)
+        outerframe.grid_columnconfigure(0, weight=1)
+        outerframe.grid_rowconfigure(0, weight=1)
+        self._add_elem(outerframe, 0, 0, sticky="NSEW")
+
+        frame = ttk.Frame(outerframe)
         self._add_elem(frame, 0, 0)
 
         # Lataa kortin tiedot

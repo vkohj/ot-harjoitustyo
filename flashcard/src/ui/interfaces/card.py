@@ -27,7 +27,7 @@ class TkinterGUICard(TkinterGUITemplate):
         self._reinitialize()
 
         frame = ttk.Frame(master=self._window, padding=(20, 20))
-        self._add_elem(frame, 0, 0, sticky="NW")
+        self._add_elem(frame, 0, 0, sticky="NSEW")
 
         sentenceframe = ttk.Frame(frame)
         self._add_elem(sentenceframe, 0, 0, name="frame_sentence")
@@ -44,13 +44,15 @@ class TkinterGUICard(TkinterGUITemplate):
             frame, text="[TRANSLATION]", font=self.__font_translation), 0, 2, name="label_translation", sticky="W")
 
         optionframe = ttk.Frame(self._window, padding=(20, 20))
-        self._add_elem(optionframe, 0, 1, sticky="SE")
+        optionframe.grid_columnconfigure(0, weight=1)
+        optionframe.grid_rowconfigure(0, weight=1)
+        self._add_elem(optionframe, 0, 1, sticky="NSEW")
 
         self._add_elem(ttk.Button(optionframe, text="Seuraava",
-                                  command=self.__next), 1, 0, name="button_next")
+                                  command=self.__next), 1, 0, name="button_next", sticky="NE")
 
         self._add_elem(ttk.Button(optionframe, text="Lopeta",
-                                  command=self._exit), 0, 0)
+                                  command=self._exit), 0, 0, sticky="NE")
 
         self.__next()
 
