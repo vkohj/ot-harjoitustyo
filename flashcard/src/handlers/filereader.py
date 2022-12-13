@@ -103,3 +103,68 @@ class FileReader:
             return None
 
         return True
+
+    @staticmethod
+    def load_to_dict(path):
+        if not os.path.exists(path):
+            FileReader.lasterror = f'Tiedostoa "{path}" ei löytynyt'
+            return None
+
+        dictionary = {}
+
+        try:
+            tree = ET.parse(path)
+
+            i = 0
+            for element in tree.iter():
+                i += 1
+
+                name = element.find('name')
+                value = element.find('value')
+                if name is None or value is None:
+                    FileReader.lasterror = f'Jätetään pois asetus indeksissä [{i}] palautettavasta listasta. Tiedosto: "{path}"'
+                    continue
+
+                name = name.text
+                value = value.text
+
+                if name in dictionary:
+                    FileReader.lasterror = f'Avain "{name}" löytyy jo listasta ({dict[name]} -> {value}). Tiedosto: "{path}"'
+
+                dictionary[name] = value
+
+        # TODO: Siirtyminen pois yleisestä Exception-luokasta
+        # Käytetään pylint disable, jottei lokissa ole samaa ongelmaa kahta kertaa
+        except Exception as ex:  # pylint: disable=broad-except
+            FileReader.lasterror = f'Virhe lukiessa tiedostoa "{path}]"\n' + str(
+                ex)
+            return None
+
+        return dictionary
+
+    @staticmethod
+    def save_dict_to_file(dictionary, file_path):
+        path = file_path.split("/")
+        folder = "./" + "/".join(path[:len(path)-1])
+        if not os.path.exists(folder):
+            os.makedirs(folder)
+
+        try:
+            xmlpack = ET.Element("data")
+
+            for key, value in dictionary.items():
+                item = ET.SubElement(xmlpack, "item")
+                ET.SubElement(item, "name").text = key
+                ET.SubElement(item, "value").text = value
+
+            tree = ET.ElementTree(xmlpack)
+            tree.write(file_path, "UTF-8")
+
+        # TODO: Siirtyminen pois yleisestä Exception-luokasta
+        # Käytetään pylint disable, jottei lokissa ole samaa ongelmaa kahta kertaa
+        except Exception as ex:  # pylint: disable=broad-except
+            FileReader.lasterror = "Virhe kirjoittaessa XML-tiedostoa\n" + \
+                str(ex)
+            return None
+
+        return True

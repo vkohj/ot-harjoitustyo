@@ -43,5 +43,25 @@
 * Vaihdettiin graafinen käyttöliittymä pääkäyttöliittymäksi
     * Konsolikäyttöliittymän voi avata  ```--console``` argumentilla tai komennolla ```poetry run invoke console```
 
+## Viikon 5 muutokset
+2022.12.07 - 2022.12.13
+
+* Graafinen käyttöliittymä
+    * Asetusikkuna ja ylävalikko
+    * Fonttikoon ja fontin perheen muutos
+    * Ikkunalle annettiin minsize- ja maxsize-arvot
+* TkinterGUI
+    * Asetusten hallinnointi
+    * Valikoiden uudelleenluominen
+* Flashcard
+    * Asetustiedoston "setting.xml" lataaminen ja tallentaminen
+* Filereader
+    * Simppeleiden .xml-tiedostojen luku sanakirjaan
+    * Sanakirjan tallentaminen .xml-tiedostoon
+* Yleisiä bugikorjauksia
+* Dokumentaatio
+    * Muutoksia arkkitehtuuri-tiedostoon
+    * Lisättiin ohjelman käyttöohje tiedostoon ohje.md
+    * Lisättiin DOCSTRING-dokumentaatio luokkiin Flashcard, Card, Pack, TkinterGUI ja Console
 
 

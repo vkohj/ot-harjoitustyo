@@ -1,5 +1,4 @@
 from tkinter import ttk
-from tkinter.font import Font
 
 
 class TkinterWidgetTemplate:
@@ -26,12 +25,6 @@ class TkinterGUITemplate:
         self.__elem = []
         self.__elem_named = {}
 
-        # Fontit
-        self._font_h1 = Font(size=14, weight="bold")
-        self._font_p = Font(size=10)
-
-        self.__initialize()
-
     def destroy(self):
         for elem in self.__elem:
             elem.widget.destroy()
@@ -39,8 +32,15 @@ class TkinterGUITemplate:
         for elem in self.__elem_named.values():
             elem.widget.destroy()
 
+        self.__elem.clear()
+        self.__elem_named.clear()
+
     def _reinitialize(self):
         raise NotImplementedError("Must override in child class")
+
+    def rebuild(self):
+        self.destroy()
+        self._initialize()
 
     def hide(self):
         if self._hidden:
@@ -70,8 +70,8 @@ class TkinterGUITemplate:
 
         self._hidden = False
 
-    def __initialize(self):
-        self._window.geometry("800x400")
+    def _initialize(self):
+        self._window.minsize(800, 400)
 
     def _add_elem(self, elem, column, row, sticky="", name=""):
         to_append = TkinterWidgetTemplate(elem, column, row, sticky)

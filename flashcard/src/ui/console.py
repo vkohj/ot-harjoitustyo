@@ -1,27 +1,25 @@
 
-#    Väliaikainen konsolikäyttöliittymä     #
-# ----------------------------------------- #
-# Tätä käyttöliittymää on tarkoituksena     #
-# käyttää ohjelman rungon kehityksen        #
-# aikana. Saa itse ohjelman muuttujana,     #
-# ja toteuttaa ohjelman metodeja riippuen   #
-# komennosta.                               #
-
 class Console:
+    """Väliaikainen konsolikäyttöliittymä.
+
+    Yksi kahdesta Flashcard-ohjelman käyttöliittymästä, jota
+     on enemmänkin tarkoitus käyttää rungon kehityksen aikana.
+    """
+
     def __init__(self, service):
+        """Luokan konstruktori.
 
-        # Sovellusolio
+        Args:
+            service (Flashcard): Ohjelmatoteutus
+        """
+
         self.__service = service
-
-        # Lista viiteistä avattuihin "valikoihin", jota
-        # käytetään run()-loopissa. Toimii jonona, jonka viimeinen
-        # olio on nyt auki oleva valikko
         self.__menu = [self.__open]
 
-    # -- Korttipakan avaamisvalikko --
-    # Näyttää kansion /kortit/ korttipakat, ja antaa mahdollisuuden
-    # kirjoittaa korttipakan osoitteen manuaalisesti
+
     def __open(self):
+        """Korttipakan avaamisvalikko, joka näyttää ja antaa käyttäjän valita Flashcard-luokan korttikansion korttipakoista.
+        """
 
         print(f"-- Korttipakat kansiossa /{self.__service.packfolder}/")
         files = self.__service.get_files_in_folder()
@@ -33,9 +31,8 @@ class Console:
         if len(files) == 0:
             print("kansiosta ei löytynyt yhtään .xmlpack-tiedostoa")
 
-        # Odota komentoa
+
         print("\nAnna numero avataksesi sitä vastaavan tiedoston")
-        #print(f"[m] osoite muu kuin /{self.__service.packfolder}/")
         print("[x] sulje")
 
         while True:
@@ -59,11 +56,13 @@ class Console:
 
             print("Tuntematon komento\n")
 
-    # -- Kun ohjelma on avannut pakan, kysy mitä pakalla tehdään -- #
+
     def __cards(self):
+        """Valikko ohjelman ladattua korttipakan.
+        """
+
         print(f'''Pakan "{self.__service.get_pack_filename()}" komennot:''')
 
-        # Jos tallentamattomia muutoksia on tehty
         if self.__service.get_pack_changed():
             print("(tallentamaton)")
 
@@ -90,9 +89,11 @@ class Console:
                 self.__menu.append(self.__print_cards)
                 return
 
-    # -- Korttien opiskelu -- #
+
     def __study(self):
-        # Aseta kortit satunnaiseen järjestykseen
+        """Valikko korttipakan korttien opiskeluun
+        """
+
         self.__service.generate_pack_random_order()
 
         while True:
@@ -107,9 +108,11 @@ class Console:
         input("Pääsit korttipakan loppuun.\nPaina ENTER jatkaaksesi.\n>")
         self.__menu.pop()
 
-    # -- Tulostaa pakan kortit --
+
     def __print_cards(self):
-        # Aloita korttien lukeminen alusta
+        """Valikko, joka tulostaa korttipakan kaikki kortit niiden lineaarisessa järjestyksessä.
+        """
+
         self.__service.generate_pack_linear_order()
 
         print("Tulostetaan kaikki kortit:\n")
@@ -123,8 +126,11 @@ class Console:
         input("Paina ENTER jatkaaksesi.\n>")
         self.__menu.pop()
 
-    # -- Muokkaa korttipakkaa --
+
     def __modify(self):
+        """Korttipakan muokkaukseen tarkoitettu valikko
+        """
+
         while True:
             print("Komentojen formaatti: <komento> (kortin numero)")
             print(
@@ -141,7 +147,7 @@ class Console:
 
             if command == "list":
                 sentences = self.__service.get_sentences()
-                # for i in range(len(sentences)):
+
                 for i, sentence in enumerate(sentences):
                     print(f"[{i+1}] {sentence}")
                 print()
@@ -167,8 +173,10 @@ class Console:
 
             print("Tuntematon komento\n")
 
-    # -- Aloita käyttöliittymän toteutus --
     def run(self):
+        """Aloittaa käyttöliittymän toteutusloopin. Palautuu, kun Console.__menu-lista on tyhjä.
+        """
+
         print("Väliaikainen konsolikäyttöliittymä\n")
 
         while True:
@@ -180,10 +188,14 @@ class Console:
             if self.__menu[-1]() == -1:
                 break
 
-    # -- Konsolitoiminnot, joita ei lisätä self.__menu-listaan --
 
-    # Yksittäisen kortin muutosikkuna
     def __linear_edit(self, index):
+        """Lineaarinen kortin muutosikkuna, jota ei lisätä Console.__menu-listaan
+
+        Args:
+            index (int): Kortin paikka listassa.
+        """
+
         if index < 0 or index >= len(self.__service.get_sentences()):
             print(f"Ei korttia kohdassa {index+1}\n")
             return
@@ -206,8 +218,20 @@ class Console:
         else:
             print("Peruutetaan\n")
 
-    # Tietojen päivittämisikkunan kysymys
+
     def __linear_update_question(self, sentence, reading, translation):
+        """Lineaarinen kortin päivittämisen varmistusikkuna, jota ei lisätä Console.__menu-listaan
+
+        Args:
+            sentence (string): Kortin lause.
+            reading (string): Kortin lukutapa.
+            translation (string): Kortin käännöslause.
+
+        Returns:
+            True: Käyttäjä hyväksyy muutokset
+            False: Käyttäjä ei hyväksynyt muutoksia
+        """
+
         print("Kortin päivitetyt tiedot")
         print(f"Lause: {sentence}")
         print(f"Lukutapa: {reading}")
@@ -219,8 +243,13 @@ class Console:
             return True
         return False
 
-    # Pakan tallennus ja tallennuksenvarmistusikkuna
+
     def __linear_save(self):
+        """Lineaarinen kortin tallennusikkuna, jota ei lisätä Console.__menu-listaan.
+
+        Tallentaa listan, jos käyttäjä varmistaa haluavansa tallentaa listan.
+        """
+
         print(
             f"Haluatko tallentaa pakan tiedostoon {self.__service.get_pack_filename()}?")
         print("([y] hyväksy, [n]/tyhjä peruuta)")
@@ -235,8 +264,12 @@ class Console:
 
         print("Peruutetaan\n")
 
-    # Kortin lisääminen pakkaan
+
     def __linear_add(self):
+        """Lineaarinen kortin lisäämisen valikko, jota ei lisätä Console.__menu-listaan.
+        
+        Muokkaa Flashcard-luokan aktiivisen korttipakan kortteja."""
+
         sentence = self.__func_new_value("Lause", True)
         if sentence is None:
             return
@@ -257,11 +290,19 @@ class Console:
         else:
             print("Peruutetaan\n")
 
-    # -- Monesti käytettäviä käyttöliittymän osia --
-
-    # Tulosta nykyinen muuttuja, ja kysy käyttäjältä uutta uutta
 
     def __func_edit_value(self, typename, default, require_highlight=False):
+        """Monesti käytettävä käyttöliittymän osa, joka tulostaa nykyisen muuttujan ja kysyy käyttäjältä uutta muuttujaa.
+
+        Args:
+            typename (string): Lauseen tyyppi
+            default (string): Nykyinen lause
+            require_highlight (bool, optional): Vaatiiko, että lause sisältää kohdan, joka on ympyröity **-merkeillä. Defaults to False.
+
+        Returns:
+            string: Palauttaa joko alkuperäisen lauseen tai uuden lauseen
+        """
+
         print(f"{typename}: {default}")
         value = input("Uusi lause (tyhjä = jatka muuttamatta): ")
         if value != "":
@@ -273,8 +314,19 @@ class Console:
         print("")
         return default
 
-    # Uusi muuttuja, peruuta jos ei arvoa
+
     def __func_new_value(self, typename, require_highlight=False):
+        """Monesti käytettävä käyttöliittymän osa, joka pyytää käyttäjältä uutta muuttujaa.
+
+        Args:
+            typename (string): Muuttujan tyyppi
+            require_highlight (bool, optional): Vaatiiko, että lause sisältää kohdan, joka on ympyröity **-merkeillä. Defaults to False.
+
+        Returns:
+            string: Uusi muuttuja.
+            None: Jos muuttuja on tyhjä tai se ei sisällä **-merkeillä ympäröityä kohtaa.
+        """
+
         value = input(f"{typename}: ")
         if value == "":
             print("Peruutetaan\n")
@@ -286,8 +338,17 @@ class Console:
         print("")
         return value
 
-    # Palauttaa, onko osa lausetta ympäröity **-merkeillä
+
     def __func_has_highlight(self, string):
+        """Monesti käytettävä käyttöliittymän osa, joka testaa, onko lause ympäröity **-merkeillä.
+
+        Args:
+            string (string): Testattava lause.
+
+        Returns:
+            boolean: Onko jokin lauseen osa ympäröity **-merkeillä.
+        """
+
         if string.count("**") != 2:
             print("Syöte ei sisältänyt **-merkeillä ympäröityä aluetta\n")
             return False

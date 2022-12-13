@@ -5,16 +5,19 @@ from ui.interfaces.card import TkinterGUICard
 
 class TkinterGUIPack(TkinterGUITemplate):
     def __init__(self, window, service, handler, pack_path):
-        self.__path = pack_path
-
         super().__init__(window, service, handler)
-        self.__initialize()
+
+        self.__path = pack_path
+        self.__pack = self._service.load_pack(self.__path)
+
+        self._initialize()
 
     def _reinitialize(self):
         self._window.grid_rowconfigure(0, weight=1)
         self._window.grid_columnconfigure(0, weight=1)
 
-    def __initialize(self):
+    def _initialize(self):
+        super()._initialize()
         self._reinitialize()
 
         outerframe = ttk.Frame(master=self._window)
@@ -26,14 +29,12 @@ class TkinterGUIPack(TkinterGUITemplate):
         self._add_elem(frame, 0, 0)
 
         # Lataa kortin tiedot
-        val = self._service.load_pack(self.__path)
-
-        if val is False:
+        if self.__pack is False:
             # Tulosta virheviesti
-            label = ttk.Label(frame, text="Virhe", font=self._font_h1)
+            label = ttk.Label(frame, text="Virhe", font=self._handler.font_h1)
             self._add_elem(label, 0, 0)
             label2 = ttk.Label(
-                frame, text=f"{self._service.file_error}", font=self._font_p)
+                frame, text=f"{self._service.file_error}", font=self._handler.font_p)
             self._add_elem(label2, 0, 2)
 
             button = ttk.Button(frame, text="Takaisin", command=self._exit)
@@ -42,7 +43,7 @@ class TkinterGUIPack(TkinterGUITemplate):
 
         # Tulosta vaihtoehdot
         self._add_elem(
-            ttk.Label(frame, text=self._service.get_pack_name(), font=self._font_h1), 0, 0)
+            ttk.Label(frame, text=self._service.get_pack_name(), font=self._handler.font_h1), 0, 0)
 
         subframe = ttk.Frame(frame)
         self._add_elem(subframe, 0, 1)
@@ -51,11 +52,11 @@ class TkinterGUIPack(TkinterGUITemplate):
         self._add_elem(ttk.Button(
             subframe, text="Takaisin", command=self._exit), 1, 0)
 
-        self._add_elem(ttk.Label(frame, text="", font=self._font_p), 0, 2)
+        self._add_elem(ttk.Label(frame, text="", font=self._handler.font_p), 0, 2)
         self._add_elem(ttk.Label(
-            frame, text="Muokkaus saatavilla vain konsolikäyttöliittymässä.", font=self._font_p), 0, 3)
+            frame, text="Muokkaus saatavilla vain konsolikäyttöliittymässä.", font=self._handler.font_p), 0, 3)
         self._add_elem(ttk.Label(
-            frame, text='"poetry run invoke console" tai "poetry run python src --console"', font=self._font_p), 0, 4)
+            frame, text='"poetry run invoke console" tai "poetry run python src --console"', font=self._handler.font_p), 0, 4)
 
     def __study(self):
         self._handler.add_menu(TkinterGUICard(
