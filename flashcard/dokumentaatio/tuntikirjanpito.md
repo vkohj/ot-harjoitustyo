@@ -15,6 +15,6 @@
 | 3.12. | 2 | Graafisen käyttöliittymän runko/testausta
 | 4.12. | 4 | Graafisen käyttöliittymän kehittäminen, toiminnallisuus
 | 6.12. | 3 | Käyttöliittymä, viikko 5 tehtävät (sekvenssikaaviot, changelog, jne.)
-| 13.12. | 5 | Ohjelman valikkopalkin luonti, asetusikkuna ja fonttiasetukset, DOCSTRING, muut 6. viikon pakolliset tehtävät
-| summa | 30
+| 13.12. | 6 | Ohjelman valikkopalkin luonti, asetusikkuna ja fonttiasetukset, DOCSTRING, arkkitehtuuri, ohjeet, changelog, jne. (muut 6. viikon pakolliset tehtävät)
+| summa | 35
 
