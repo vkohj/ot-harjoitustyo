@@ -92,7 +92,8 @@ sequenceDiagram
   Flashcard->>UI: True
 ```
 
-Lataamisen jälkeen pakka on tallennettu Flashcard-luokkaan. Käyttöjärjestelmä voi sitten käyttää pakkaa erilaisilla komennoilla, kuten ottamalla pakasta seuraavan kortin ```get_next_card()```-komennolla tai pyytämällä pakan sekoittamista komennolla ```generate_pack_random_order()```
+Lataamisen jälkeen pakka on tallennettu Flashcard-luokkaan. Käyttöjärjestelmä voi sitten käyttää pakkaa Flashcard-luokan kautta erilaisilla komennoilla, kuten pakasta seuraavan kortin ottavalla ```get_next_card()```-komennolla tai pakan sekoittamista pyytävällä komennolla ```generate_pack_random_order()```
+
 
 ## Tiedostot
 Ohjelma kahta erilaista .xml-tiedostoa suorittaakseen toimintoja. Ensimmäinen on korttipakkoja ja kortteja kuvaavat .xmlpack-tiedostot, joita ohjelma voi tällä hetkellä ladata "./kortit" kansiosta. Lisäksi ohjelma lataa (tai luo, jos sellaista ei ole) setting.xml-tiedoston, joka määrittelee fontin perheen ja fonttikoon.
