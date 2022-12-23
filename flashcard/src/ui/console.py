@@ -18,7 +18,8 @@ class Console:
 
 
     def __open(self):
-        """Korttipakan avaamisvalikko, joka näyttää ja antaa käyttäjän valita Flashcard-luokan korttikansion korttipakoista.
+        """Korttipakan avaamisvalikko, joka näyttää ja antaa käyttäjän
+        valita Flashcard-luokan korttikansion korttipakoista.
         """
 
         print(f"-- Korttipakat kansiossa /{self.__service.packfolder}/")
@@ -30,7 +31,6 @@ class Console:
 
         if len(files) == 0:
             print("kansiosta ei löytynyt yhtään .xmlpack-tiedostoa")
-
 
         print("\nAnna numero avataksesi sitä vastaavan tiedoston")
         print("[x] sulje")
@@ -173,6 +173,7 @@ class Console:
 
             print("Tuntematon komento\n")
 
+
     def run(self):
         """Aloittaa käyttöliittymän toteutusloopin. Palautuu, kun Console.__menu-lista on tyhjä.
         """
@@ -209,7 +210,7 @@ class Console:
             "Käännös", self.__service.get_card_translation(index))
 
         # Muuta lause
-        if self.__linear_update_question(sentence, reading, translation) == "y":
+        if self.__linear_update_question(sentence, reading, translation):
             self.__service.set_card_sentence(index, sentence)
             self.__service.set_card_reading(index, reading)
             self.__service.set_card_translation(index, translation)
@@ -267,7 +268,7 @@ class Console:
 
     def __linear_add(self):
         """Lineaarinen kortin lisäämisen valikko, jota ei lisätä Console.__menu-listaan.
-        
+
         Muokkaa Flashcard-luokan aktiivisen korttipakan kortteja."""
 
         sentence = self.__func_new_value("Lause", True)
@@ -292,12 +293,14 @@ class Console:
 
 
     def __func_edit_value(self, typename, default, require_highlight=False):
-        """Monesti käytettävä käyttöliittymän osa, joka tulostaa nykyisen muuttujan ja kysyy käyttäjältä uutta muuttujaa.
+        """Monesti käytettävä käyttöliittymän osa,
+        joka tulostaa nykyisen muuttujan ja kysyy käyttäjältä uutta muuttujaa.
 
         Args:
             typename (string): Lauseen tyyppi
             default (string): Nykyinen lause
-            require_highlight (bool, optional): Vaatiiko, että lause sisältää kohdan, joka on ympyröity **-merkeillä. Defaults to False.
+            require_highlight (bool, optional): Vaatiiko, että lause sisältää kohdan,
+            joka on ympyröity **-merkeillä. Defaults to False.
 
         Returns:
             string: Palauttaa joko alkuperäisen lauseen tai uuden lauseen
@@ -320,7 +323,8 @@ class Console:
 
         Args:
             typename (string): Muuttujan tyyppi
-            require_highlight (bool, optional): Vaatiiko, että lause sisältää kohdan, joka on ympyröity **-merkeillä. Defaults to False.
+            require_highlight (bool, optional): Vaatiiko, että lause sisältää kohdan,
+            joka on ympyröity **-merkeillä. Defaults to False.
 
         Returns:
             string: Uusi muuttuja.

@@ -3,7 +3,18 @@ from ui.interfaces.template import TkinterGUITemplate
 
 
 class TkinterGUICard(TkinterGUITemplate):
+    """Korttien opiskeluikkuna. Käyttää TkinterGUITemplate-luokkaa runkona.
+    """
+
     def __init__(self, window, service, handler):
+        """Luokan konstruktori.
+
+        Args:
+            window (Tkinter.Tk): Tkinter-ikkuna.
+            service (Flashcard): Sovellustoteutus.
+            handler (TkinterGUI): Luokkaa käyttävä käyttöliittymän hallitsijaluokka.
+        """
+
         super().__init__(window, service, handler)
 
         self.__card = None
@@ -12,12 +23,21 @@ class TkinterGUICard(TkinterGUITemplate):
         self._service.generate_pack_random_order()
         self._initialize()
 
+
     def _reinitialize(self):
+        """Uudelleenlataa jotkin valikon osat, joiden tiedot ovat voineet muuttua.
+        """
+
         self._window.grid_rowconfigure(0, weight=10)
         self._window.grid_rowconfigure(0, weight=1)
         self._window.grid_columnconfigure(0, weight=1)
 
+
     def _initialize(self):
+        """Luo korttien opiskeluun tarkoitetun valikon Tkinter-objektit
+         ja lataa ensimmäisen kortin tiedot.
+        """
+
         super()._initialize()
         self._reinitialize()
 
@@ -51,7 +71,12 @@ class TkinterGUICard(TkinterGUITemplate):
 
         self.__load_text()
 
+
     def __load_text(self):
+        """Lataa nykyisen kortin tiedot valikkoon.
+        Lukutapa ja käännöslause näytetään, jos TkinterGUICard.__card_turned on tosi.
+        """
+
         if self.__card is None:
             self.__next()
 
@@ -66,7 +91,6 @@ class TkinterGUICard(TkinterGUITemplate):
                 text = sentences[i]
             self._get_elem(f"label_sentence{i+1}").configure(text=text)
 
-
         # Tee toimintoja riippuen onko kortti käännetty vai ei
         if self.__card_turned:
             self._get_elem("label_reading").configure(text=self.__card.reading)
@@ -79,7 +103,12 @@ class TkinterGUICard(TkinterGUITemplate):
             self._get_elem("label_translation").configure(text="")
             self._get_elem("button_next").configure(text="Näytä")
 
+
     def __next(self):
+        """Näytä/seuraava -napin toiminto. Kääntää kortin, tai ottaa pakasta seuraavan kortin.
+        Kutsuu sitten TkinterGUICard.__load_text()-metodia tekstin näyttämiseksi.
+        """
+
         if self.__card_turned:
             self.__card = self._service.get_next_card()
             if self.__card is None:

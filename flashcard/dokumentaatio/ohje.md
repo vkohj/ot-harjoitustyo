@@ -24,7 +24,7 @@ Ohjelman voi asentaa joko ilman tai sisältäen ohjelman kehitykseen vaadittavat
 ![](./img/ohje/aloitus.png)
 Aloitusruutu näyttää kaikki ohjelman kortit-kansiosta löytyvät korttipakat, joita pitäisi tulla ohjelman mukana ainakin yksi. Haluamasi pakan klikkaaminen johtaa kyseisen pakan avaamiseen.
 
-Yllä olevasta valikosta voit avata Asetukset, ja tulevaisuudessa myös avata korttipakan haluamastasi osoitteesta.
+Yllä olevasta valikosta voit avata Asetukset tai avata pakan jostain muusta kuin /kortit/-kansiosta.
 
 Kun ohjelman käynnistää ensimmäisen kerran, kannattaan ensin käydä tarkistamassa asetukset.
 

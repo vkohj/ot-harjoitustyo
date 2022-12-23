@@ -43,7 +43,7 @@
 * Vaihdettiin graafinen käyttöliittymä pääkäyttöliittymäksi
     * Konsolikäyttöliittymän voi avata  ```--console``` argumentilla tai komennolla ```poetry run invoke console```
 
-## Viikon 5 muutokset
+## Viikon 6 muutokset
 2022.12.07 - 2022.12.13
 
 * Graafinen käyttöliittymä
@@ -64,4 +64,13 @@
     * Lisättiin ohjelman käyttöohje tiedostoon ohje.md
     * Lisättiin DOCSTRING-dokumentaatio luokkiin Flashcard, Card, Pack, TkinterGUI ja Console
 
+## Viikon 7 muutokset
+2022.12.14 - 2022.12.25
 
+* Graafinen käyttöliittymä
+    * Lisättiin muun kuin /kortit/-kansion tiedostojen avaamisikkuna
+    * Bugikorjauksia
+* TkinterGUI-luokat
+    * Lisättiin DOCSTRING-tekstit
+* Bugikorjauksia
+* Dokumentaation päivitys

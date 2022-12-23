@@ -35,7 +35,7 @@ class Pack:
             Card: Kortti.
             None: Jos sijainnista ei löydy korttia.
         """
-    
+
         if index < 0 or index >= len(self.__cards):
             return None
         return self.__cards[index]
