@@ -1,7 +1,7 @@
 # Vaatimusmäärittely
 
 ## Tarkoitus
-Sovelluksen avulla käyttäjän pitäisi pystyä luomaan, hallitsemaan ja tarkastelemaan ns. suomi-japani "flashcard"-kortteja graafisessa käyttöliittymässä.
+Sovelluksen avulla käyttäjän pystyy luomaan, hallitsemaan ja tarkastelemaan ns. suomi-japani "flashcard"-kortteja joko graafisessa tai konsolikäyttöliittymässä. Muokkaaminen on ainoastaan saatavilla konsolikäyttöliittymässä.
 
 ## Käyttöliittymä
 Käyttäjän pitäisi pystyä navigoimaan käyttöliittymää ja käyttämään kortteja vaikka ei ymmärtäisi sanaakaan japania, vaikkakin itse kortit olisivatkin tällaisessa tilanteessa epäkäytännöllisiä.
@@ -21,11 +21,8 @@ Käyttäjän pitäisi pystyä navigoimaan käyttöliittymää ja käyttämään 
 - Konsolikäyttöliittymä korttien lukemiseen (tehty)
     - Kortti antaa lauseen japaniksi, josta yksi sana on alleviivattu (tehty)
     - Kortin "kääntöpuolella" löytyy esim. lukutapa ja suomen kielen vastine sanalle (tehty)
-- Graafinen käyttöliittymä (testiversio)
+- Graafinen käyttöliittymä (tehty)
 - Korttien lataus xml-tiedostosta (tehty)
 - Korttien muokkaaminen ja lisääminen konsolikäyttöliittymässä (tehty)
-- Korttien avaaminen joko ohjelman alihakemistosta tai valinnaisesta osoitteesta
-
-### Muuta lisättävää jne.
-- Korttien muokkaus, luonti ja poisto graafisen käyttöliittymän avulla
-- Käyttäjä voi kirjoittaa alleviivatun sanan lukutavan, jonka sovellus sitten toteaa oikeaksi tai vääräksi.
+- Korttien avaaminen valinnaisesta osoitteesta (tehty)
+- Asetusten asettaminen ja lataaminen (tehty)
