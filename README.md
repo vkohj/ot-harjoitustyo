@@ -5,7 +5,7 @@ Sovellus tulee mahdollistamaan suomi-japani korttipakkojen luomisen, muokkaamise
 
 
 ## Uusin julkaistu versio
-[Flashcard - Viikko 5](https://github.com/vkohj/ot-harjoitustyo/releases/tag/viikko5)
+[Flashcard - Loppupalautus](https://github.com/vkohj/ot-harjoitustyo/releases/tag/loppupalautus)
 
 ## Vaatimukset
 ⚠️ Python 3.8 tai uudempi ⚠️
