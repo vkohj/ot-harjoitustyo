@@ -25,27 +25,42 @@ class TkinterGUI:
         self.init_menubar()
 
 
+    def __set_font_size(self, font, index, default):
+        size = self.__service.get_setting(index)
+        if size is None:
+            size = default
+
+        font.configure(size=size)
+
+
     def __reload_settings(self):
         """Lataa käyttöliittymän asetukset, kuten fontit.
         """
 
         family = self.__service.get_setting("font_family")
+        if family is None:
+            family = ""
 
-        self.font_h1 = font.Font(
-            family=family, size=self.__service.get_setting("font_h1"), weight="bold")
-        self.font_p = font.Font(
-            family=family, size=self.__service.get_setting("font_p"))
-        self.font_p_underline = font.Font(
-            family=family, size=self.__service.get_setting("font_p"), underline=1)
+        self.font_h1 = font.Font(family=family, weight="bold")
+        self.__set_font_size(self.font_h1, "font_h1", 14)
 
-        self.font_sentence = font.Font(
-            family=family, size=self.__service.get_setting("font_sentence"))
-        self.font_sentence_highlight = font.Font(
-            family=family, size=self.__service.get_setting("font_sentence"), weight="bold")
-        self.font_translation = font.Font(
-            family=family, size=self.__service.get_setting("font_translation"))
-        self.font_reading = font.Font(
-            family=family, size=self.__service.get_setting("font_reading"))
+        self.font_p = font.Font(family=family)
+        self.__set_font_size(self.font_p, "font_p", 10)
+
+        self.font_p_underline = font.Font(family=family, underline=1)
+        self.__set_font_size(self.font_p_underline, "font_p", 10)
+
+        self.font_sentence = font.Font(family=family)
+        self.__set_font_size(self.font_sentence, "font_sentence", 12)
+
+        self.font_sentence_highlight = font.Font(family=family, weight="bold")
+        self.__set_font_size(self.font_sentence, "font_sentence", 12)
+
+        self.font_translation = font.Font(family=family)
+        self.__set_font_size(self.font_sentence, "font_translation", 11)
+
+        self.font_reading = font.Font(family=family)
+        self.__set_font_size(self.font_sentence, "font_reading", 11)
 
 
     def init_menubar(self):
@@ -64,7 +79,8 @@ class TkinterGUI:
         """Aloittaa käyttöliittymän toteutusloopin.
         """
 
-        self.__menu.append(TkinterGUIOpen(self.__window, self.__service, self))
+        #self.__menu.append(TkinterGUIOpen(self.__window, self.__service, self))
+        self.add_menu(TkinterGUIOpen(self.__window, self.__service, self))
 
         self.__window.mainloop()
 

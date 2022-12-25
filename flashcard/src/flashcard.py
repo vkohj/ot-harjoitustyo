@@ -189,7 +189,11 @@ class Flashcard:
 
         Returns:
             string: asetus
+            None: jos avainta ei löytynyt
         """
+
+        if key not in self.__setting:
+            return None
 
         return self.__setting[key]
 
@@ -229,20 +233,45 @@ class Flashcard:
 
         return self.__packfolder
 
-    def __pack_set(self):
+    def __card_get(self, index):
+        """Luokan sisäinen metodi, jolla voidaan nopeasti tarkistaa kortin kunto ennen
+        kortin tietojen palauttamista.
+        Tarkastaa, onko käytössä oleva pakka/kortti olemassa, ja palauttaa kortin pakasta.
+
+        Returns:
+            Card: Kortti, jos pakka ja kortti olivat olemassa.
+            None: Jos pakkaa/korttia ei ollut olemassa.
+        """
+
+        if self.__activepack is None:
+            return None
+        card = self.__activepack.get_card(index)
+        if card is None:
+            return None
+        return card
+
+
+    def __pack_set(self, index=-1):
         """Luokan sisäinen metodi, joka ajetaan aina ennen korttien muokkaamista.
         Tarkastaa, onko käytössä oleva pakka olemassa, ja
         laittaa muutosta ilmaisevan muuttujan todeksi.
 
+        Args:
+            index (int, optional): Jos halutaan tarkastaa, onko kortti pakassa. Defaults to -1.
+
         Returns:
-            boolean: True, jos pakka oli olemassa ja
+            boolean: True, jos pakka ja kortti oli olemassa ja
             Pack.unsaved_changes on muutettu todeksi, muuten False.
         """
 
         if self.__activepack is None:
             return False
+        if index != -1 and not self.__activepack.exists(index):
+            return False
+
         self.__activepack.unsaved_changes = True
         return True
+
 
     def new_card(self, sentence, reading, translation):
         """Lisää uuden kortin käytössä olevaan korttipakkaan.
@@ -266,6 +295,7 @@ class Flashcard:
 
         return True
 
+
     def get_card_sentence(self, index):
         """Hae tämänhetkisestä korttipakasta kortin japaninkielinen lause
 
@@ -277,9 +307,11 @@ class Flashcard:
             None: Pakkaa ei ole ladattu.
         """
 
-        if self.__activepack is None:
+        card = self.__card_get(index)
+        if card is None:
             return None
-        return self.__activepack.get_card(index).sentence
+        return card.sentence
+
 
     def set_card_sentence(self, index, value):
         """Aseta tämänhetkisestä korttipakasta löytyvän kortin japaninkielinen lause.
@@ -289,9 +321,10 @@ class Flashcard:
             value (string): Lause
         """
 
-        if self.__pack_set() is False:
+        if self.__pack_set(index) is False:
             return
         self.__activepack.get_card(index).sentence = value
+
 
     def get_card_reading(self, index):
         """Hae tämänhetkisestä korttipakasta kortin lauseen lukutapa
@@ -304,9 +337,11 @@ class Flashcard:
             None: Pakkaa ei ole ladattu.
         """
 
-        if self.__activepack is None:
+        card = self.__card_get(index)
+        if card is None:
             return None
-        return self.__activepack.get_card(index).reading
+        return card.reading
+
 
     def set_card_reading(self, index, value):
         """Aseta tämänhetkisestä korttipakasta löytyvän kortin lukutapa.
@@ -317,9 +352,10 @@ class Flashcard:
             value (string): Lukutapa
         """
 
-        if self.__pack_set() is False:
+        if self.__pack_set(index) is False:
             return
         self.__activepack.get_card(index).reading = value
+
 
     def get_card_translation(self, index):
         """Hae tämänhetkisestä korttipakasta kortin käännöslause.
@@ -332,9 +368,11 @@ class Flashcard:
             None: Pakkaa ei ole ladattu
         """
 
-        if self.__activepack is None:
+        card = self.__card_get(index)
+        if card is None:
             return None
-        return self.__activepack.get_card(index).translation
+        return card.translation
+
 
     def set_card_translation(self, index, value):
         """Aseta tämänhetkisestä korttipakasta löytyvän kortin käännöslause.
@@ -345,6 +383,6 @@ class Flashcard:
             value (string): Käännöslause
         """
 
-        if self.__pack_set() is False:
+        if self.__pack_set(index) is False:
             return
         self.__activepack.get_card(index).translation = value

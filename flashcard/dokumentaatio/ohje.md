@@ -36,7 +36,7 @@ Asetukset-ikkuna antaa käyttäjälle mahdollisuuden määrittää käyttöliitt
 ### Pakkavalikko
 ![](./img/ohje/pakka.png)
 
-Graafisen käyttöliittymän pakkavalikko on vielä tällä hetkellä tyhjä; vaihtoehtona on ainoastaan palata takaisinpäin tai opiskella kortteja. Korttien muokkaaminen on vielä tällä hetkellä saatavilla ainoastaan konsolikäyttöliittymästä.
+Graafisen käyttöliittymän pakkavalikko on aika tyhjä: vaihtoehtona on ainoastaan palata takaisinpäin tai opiskella kortteja. Korttien muokkaaminen on vielä tällä hetkellä saatavilla ainoastaan konsolikäyttöliittymästä.
 
 ### Korttien opiskelu
 ![](./img/ohje/kortti.png)

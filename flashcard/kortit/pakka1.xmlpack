@@ -1,1 +1,46 @@
-<pack><name>Testipakka</name><cards><card><sentence>飛行機で素敵な空の**旅**を楽しむ。</sentence><reading>たび</reading><translation>matka</translation></card><card><sentence>学校に**約**千人の学生がいる。</sentence><reading>やく</reading><translation>noin, suunnilleen</translation></card><card><sentence>しっかり**準備運動**をしろ</sentence><reading>じゅんびうんどう</reading><translation>verryttely, lämmittely</translation></card><card><sentence>**正しい**読み方で読む。</sentence><reading>ただしい</reading><translation>oikea</translation></card><card><sentence>これは**難しい**問題だ</sentence><reading>むずかしい</reading><translation>vaikea</translation></card><card><sentence>メールに**返信**する</sentence><reading>へんしん</reading><translation>vastaus</translation></card><card><sentence>**軽い**気持ちで冗談を言う。</sentence><reading>かるい</reading><translation>kevyt</translation></card><card><sentence>２つの**世界**が１つになる</sentence><reading>せかい</reading><translation>maailma</translation></card></cards></pack>
+<pack>
+    <name>Testipakka</name>
+    
+    <cards>
+        <card>
+            <sentence>飛行機で素敵な空の**旅**を楽しむ。</sentence>
+            <reading>たび</reading>
+            <translation>matka</translation>
+        </card>
+        <card>
+            <sentence>学校に**約**千人の学生がいる。</sentence>
+            <reading>やく</reading>
+            <translation>noin, suunnilleen</translation>
+        </card>
+        <card>
+            <sentence>しっかり**準備運動**をしろ</sentence>
+            <reading>じゅんびうんどう</reading>
+            <translation>verryttely, lämmittely</translation>
+        </card>
+        <card>
+            <sentence>**正しい**読み方で読む。</sentence>
+            <reading>ただしい</reading>
+            <translation>oikea</translation>
+        </card>
+        <card>
+            <sentence>これは**難しい**問題だ</sentence>
+            <reading>むずかしい</reading>
+            <translation>vaikea</translation>
+        </card>
+        <card>
+            <sentence>メールに**返信**する</sentence>
+            <reading>へんしん</reading>
+            <translation>vastaus</translation>
+        </card>
+        <card>
+            <sentence>**軽い**気持ちで冗談を言う。</sentence>
+            <reading>かるい</reading>
+            <translation>kevyt</translation>
+        </card>
+        <card>
+            <sentence>２つの**世界**が１つになる</sentence>
+            <reading>せかい</reading>
+            <translation>maailma</translation>
+        </card>
+    </cards>
+</pack>

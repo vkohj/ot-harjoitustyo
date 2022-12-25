@@ -81,6 +81,10 @@ class FileReader:
                 ex)
             return None
 
+        except PermissionError:
+            FileReader.lasterror = "Tiedostohallintaan liittyviä oikeuksia puuttuu."
+            return False
+
         return pack
 
 
@@ -123,6 +127,10 @@ class FileReader:
         except ET.ParseError as ex:
             FileReader.lasterror = "Virhe kirjoittaessa XML-tiedostoa\n" + \
                 str(ex)
+            return False
+
+        except PermissionError:
+            FileReader.lasterror = "Tiedostohallintaan liittyviä oikeuksia puuttuu."
             return False
 
         return True
@@ -174,6 +182,10 @@ class FileReader:
                 ex)
             return None
 
+        except PermissionError:
+            FileReader.lasterror = "Tiedostohallintaan liittyviä oikeuksia puuttuu."
+            return False
+
         return dictionary
 
 
@@ -209,6 +221,10 @@ class FileReader:
         except ET.ParseError as ex:
             FileReader.lasterror = "Virhe kirjoittaessa XML-tiedostoa\n" + \
                 str(ex)
+            return False
+
+        except PermissionError:
+            FileReader.lasterror = "Tiedostohallintaan liittyviä oikeuksia puuttuu."
             return False
 
         return True

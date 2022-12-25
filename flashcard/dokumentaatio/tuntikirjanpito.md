@@ -18,5 +18,6 @@
 | 13.12. | 6 | Ohjelman valikkopalkin luonti, asetusikkuna ja fonttiasetukset, DOCSTRING, arkkitehtuuri, ohjeet, changelog, jne. (muut 6. viikon pakolliset tehtävät)
 | 22.12. | 3 | Bugikorjauksia, viimeistelyä, suunnitellua
 | 23.12. | 4 | DOCSTRING, uusia testejä, ohjelman viimeistelyä, avaa-valikko, dokumentaatio.
-| summa | 42
+| 25.12. | 4 | Viimeistelyä, dokumentaatio, bugikorjauksia, pieniä muutoksia
+| summa | 46
 

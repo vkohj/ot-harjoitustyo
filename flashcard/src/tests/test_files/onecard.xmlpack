@@ -1,0 +1,11 @@
+<pack>
+    <name>Testipakka</name>
+
+    <cards>
+        <card>
+            <sentence>一つだけです。</sentence>
+            <reading>ひとつ</reading>
+            <translation>yksi</translation>
+        </card>
+    </cards>
+</pack>

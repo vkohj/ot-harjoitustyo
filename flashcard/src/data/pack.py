@@ -36,9 +36,23 @@ class Pack:
             None: Jos sijainnista ei löydy korttia.
         """
 
-        if index < 0 or index >= len(self.__cards):
+        if not self.exists(index):
             return None
         return self.__cards[index]
+
+    def exists(self, index):
+        """Palauttaa, onko index korttipakassa.
+
+        Args:
+            index (int): Kortin numero, jota etsitään.
+
+        Returns:
+            boolean: Onko index korttipakassa vai ei.
+        """
+
+        if index < 0 or index >= len(self.__cards):
+            return False
+        return True
 
     @property
     def name(self):

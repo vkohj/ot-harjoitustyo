@@ -6,14 +6,14 @@ Sovelluksen avulla käyttäjän pystyy luomaan, hallitsemaan ja tarkastelemaan n
 ## Käyttöliittymä
 Käyttäjän pitäisi pystyä navigoimaan käyttöliittymää ja käyttämään kortteja vaikka ei ymmärtäisi sanaakaan japania, vaikkakin itse kortit olisivatkin tällaisessa tilanteessa epäkäytännöllisiä.
 
-#### Sovelluksen aloitus
-![](./img/alku.png)
+#### Sovelluksen aloitus (luonnos)
+![](./img/vaatimusmaarittely/alku.png)
 
-#### Korttien tarkastelu
-![](./img/tarkastelu.png)
+#### Korttien tarkastelu (luonnos)
+![](./img/vaatimusmaarittely/tarkastelu.png)
 
-#### Asetukset (Avautuu uuteen ikkunaan?)
-![](./img/asetukset.png)
+#### Asetukset-ikkunan muoto (luonnos)
+![](./img/vaatimusmaarittely/asetukset.png)
 
 ## Toiminnallisuus
 
