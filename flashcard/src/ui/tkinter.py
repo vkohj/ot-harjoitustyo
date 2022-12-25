@@ -54,13 +54,13 @@ class TkinterGUI:
         self.__set_font_size(self.font_sentence, "font_sentence", 12)
 
         self.font_sentence_highlight = font.Font(family=family, weight="bold")
-        self.__set_font_size(self.font_sentence, "font_sentence", 12)
+        self.__set_font_size(self.font_sentence_highlight, "font_sentence", 12)
 
         self.font_translation = font.Font(family=family)
-        self.__set_font_size(self.font_sentence, "font_translation", 11)
+        self.__set_font_size(self.font_translation, "font_translation", 11)
 
         self.font_reading = font.Font(family=family)
-        self.__set_font_size(self.font_sentence, "font_reading", 11)
+        self.__set_font_size(self.font_reading, "font_reading", 11)
 
 
     def init_menubar(self):
