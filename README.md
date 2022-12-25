@@ -1,14 +1,14 @@
 # Suomi-japani Flashcard-sovellus
-Ohjelma on keskeneräinen ja osa [Helsingin Yliopiston ohjelmistotekniikan](https://ohjelmistotekniikka-hy.github.io/) kurssia.
+Ohjelma on osa [Helsingin Yliopiston ohjelmistotekniikan](https://ohjelmistotekniikka-hy.github.io/) kurssia.
 
-Sovellus tulee mahdollistamaan suomi-japani korttipakkojen luomisen, muokkaamisen ja tarkastelemisen. Kortteja tarkastellessa käyttäjä näkee ensin japaninkielisen lauseen ja erikseen eritellyn sanan alleviivattuna. Painamalla nappia käyttäjä saa näkyviin sanan lukutavan ja suomen kielen käännöksen.
+Sovellus mahdollistaa suomi-japani korttipakkojen luomisen, muokkaamisen ja tarkastelemisen. Kortteja tarkastellessa käyttäjä näkee ensin japaninkielisen lauseen ja erikseen eritellyn sanan alleviivattuna. Painamalla nappia käyttäjä saa näkyviin sanan lukutavan ja suomen kielen käännöksen.
 
 
 ## Uusin julkaistu versio
 [Flashcard - Loppupalautus](https://github.com/vkohj/ot-harjoitustyo/releases/tag/loppupalautus)
 
 ## Vaatimukset
-⚠️ Python 3.8 tai uudempi ⚠️
+⚠️ **Python 3.8 tai uudempi** ⚠️
 
 Sovellus suositellaan asentamaan poetry-järjestelmällä.
 
@@ -21,7 +21,7 @@ Sovellus suositellaan asentamaan poetry-järjestelmällä.
 * autopep8 2.0.0 tai uudempi (dev)
 
 ## Asennus
-⚠️ Huomaathan, että alla olevat komennot suoritetaan ohjelman pääkansiossa "flashcard"!
+⚠️ **Huomaathan, että alla olevat komennot suoritetaan ohjelman pääkansiossa "flashcard"!**
 
 Ohjelman voi asentaa joko ilman tai sisältäen ohjelman kehitykseen vaadittavat moduulit.
 
@@ -40,9 +40,11 @@ Ohjelman voi asentaa joko ilman tai sisältäen ohjelman kehitykseen vaadittavat
 * Vaihtoehtoinen: ```poetry run python src --console``` (Windows, Linux yms.)
 
 ## Dokumentaatio
+* [Ohje](./flashcard/dokumentaatio/ohje.md)
 * [Changelog](./flashcard/dokumentaatio/changelog.md)
 * [Vaatimusmäärittely](./flashcard/dokumentaatio/vaatimusmaarittely.md)
 * [Arkkitehtuuri](./flashcard/dokumentaatio/arkkitehtuuri.md)
+* [Testaus](./flashcard/dokumentaatio/testaus.md)
 * [Työaikakirjanpito](./flashcard/dokumentaatio/tuntikirjanpito.md)
 
 ## Lisäkomentoja (kehittämisversiolle)
